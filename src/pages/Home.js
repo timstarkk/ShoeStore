@@ -1,9 +1,15 @@
 import React from 'react'
+import Hero from '../components/Hero/Hero';
+import Banner from '../components/Banner/Banner';
 
 export default function Home() {
     return (
-        <div>
-            hello from home page
-        </div>
+        <>
+            <Hero>
+                <Banner title="TIM STARK" subtitle="Full-Stack Developer">
+                    <div className="btn btn-primary">view projects</div>
+                </Banner>
+            </Hero>
+        </>
     )
 }
