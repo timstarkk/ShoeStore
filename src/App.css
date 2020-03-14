@@ -27,7 +27,7 @@ html {
 }
 
 body {
-  padding-top: 62px;
+  /* padding-top: 62px; */
   color: var(--mainBlack);
   background: var(--mainGrey);
   font-family: 'nunito';
