@@ -1,9 +1,26 @@
-import React from 'react'
+import React, { Component } from 'react';
+import { ItemContext } from '../../context';
+import './Featured.css';
+import Item from '../Item/Item';
+import Loading from '../Loading/Loading';
+import Title from '../Title/Title';
 
-export default function Featured() {
-    return (
-        <div>
+export default class Featured extends Component {
+    static contextType = ItemContext;
+    render() {
+        let { loading, featuredItems: items } = this.context;
 
-        </div>
-    )
+        items = items.map(item => {
+            return <Item key={item.id} item={item} />
+        });
+
+        return (
+            <section>
+                <Title title="featured items" />
+                <div className="featured-items-center">
+                    {loading ? <Loading /> : items}
+                </div>
+            </section>
+        )
+    }
 }
