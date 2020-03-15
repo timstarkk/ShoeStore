@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import items from './data';
 
-const ShopContext = React.createContext();
+const ItemContext = React.createContext();
 
-class ShopProvider extends Component {
+class ItemProvider extends Component {
     state = {
         shopItems: [],
         sortedItems: [],
@@ -58,14 +58,14 @@ class ShopProvider extends Component {
 }
 
 
-const ShopConsumer = ShopContext.Consumer;
+const ItemConsumer = ItemContext.Consumer;
 
-export function withShopConsumer(Component) {
+export function withItemConsumer(Component) {
     return function ConsumerWrapper(props) {
-        return <ShopConsumer>
+        return <ItemConsumer>
             {value => <Component {...props} context={value} />}
-        </ShopConsumer>
+        </ItemConsumer>
     }
 };
 
-export { ShopProvider, ShopConsumer, ShopContext }
+export { ItemProvider, ItemConsumer, ItemContext }
