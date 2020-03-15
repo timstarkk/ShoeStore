@@ -34,9 +34,9 @@ class ItemProvider extends Component {
         let tempItems = items.map(item => {
             let id = item.sys.id;
             let images = item.fields.images.map(images => images.fields.file.url);
-            let item = { ...item.fields, images, id }
+            let tempItem = { ...item.fields, images, id }
 
-            return item
+            return tempItem
         });
 
         return tempItems;
@@ -46,13 +46,13 @@ class ItemProvider extends Component {
 
     render() {
         return (
-            <RoomContext.Provider value={{
+            <ItemContext.Provider value={{
                 ...this.state,
                 // getRoom: this.getRoom,
                 // handleChange: this.handlechange
             }}>
                 {this.props.children}
-            </RoomContext.Provider>
+            </ItemContext.Provider>
         )
     };
 }
