@@ -9,14 +9,11 @@ export default function Item({ item }) {
         <article className="item">
             <div className="img-container">
                 <img src={images[0] || defaultImg} alt="item option" />
-                <div className="price-top">
-                    <h6>${price}</h6>
-                </div>
                 {/* <Link to={`/rooms/${slug}`} className="btn-primary room-link">Features</Link> */}
+                <div className="price-top">
+                    <h6>{name} - ${price}</h6>
+                </div>
             </div>
-            <p className="item-info">
-                {name}
-            </p>
         </article>
     )
 };
