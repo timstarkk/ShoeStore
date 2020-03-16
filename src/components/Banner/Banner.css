@@ -8,13 +8,14 @@
     text-transform: capitalize;
     letter-spacing: var(--mainSpacing);
     border-radius: 3px;
+    height: 42vh;
     }
     .banner h1 {
         font-family: 'Varela Round';
         font-size: 2.5rem;
         line-height: 2.5rem;
         letter-spacing: 0.8rem;
-        background: -webkit-linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0));
+        background: -webkit-linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 1));
         -webkit-text-fill-color: transparent;
         -webkit-background-clip: text;
         background-clip: text;
@@ -32,7 +33,7 @@
     }
     
     .banner-subtitle{
-        color: rgba(255,255,255,.5);
+        color: rgba(255,255,255,1);
         margin: .5rem auto 1.5rem auto;
     }
     
