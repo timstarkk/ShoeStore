@@ -7,9 +7,9 @@
 }
 
 :root {
-  --primaryColor: #64a19d;
-  --primaryColorLight: #80cfca;
-  --primaryColorDark: #4f837f;
+  --primaryColor: #e46756;
+  --primaryColorLight: #f18d80;
+  --primaryColorDark: #c95f51;
   --mainWhite: #fff;
   --offWhite: #f7f7f7;
   --mainBlack: #222;
@@ -94,20 +94,12 @@ h6 {
 }
 
 .btn-primary {
-  /* display: inline-block;
-  text-decoration: none;
-  letter-spacing: var(--mainSpacing); */
+  border-radius: 30px;
   color: var(--mainWhite);
   background: var(--primaryColor);
-  /* padding: 0.4rem 0.9rem;
-  border: 3px solid var(--primaryColor);
-  transition: var(--mainTransition);
-  text-transform: uppercase;
-  cursor: pointer;
-  font-weight: 500; */
 }
 .btn-primary:hover {
-  background-color: #4f837f;
+  background-color: var(--primaryColorDark);
 }
 
 .btn-secondary {
