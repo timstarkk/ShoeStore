@@ -35,7 +35,7 @@ export default class Navbar extends Component {
                         <Link to="#top" className="text-link">
                             <div className="logo-div">
                                 <p className={"logo-text " + (this.state.scrolled ? "nav-scrolled" : "")}>
-                                    Tim Stark
+                                    ShoeStore
                                 </p>
                             </div>
                             {/* <img src={logo} alt="logo" style={{ width: "250px", height: "auto" }} /> */}
