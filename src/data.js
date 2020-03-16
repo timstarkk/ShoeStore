@@ -39,7 +39,7 @@ export default [
                 {
                     fields: {
                         file: {
-                            url: img2
+                            url: img1
                         }
                     }
                 }
@@ -83,7 +83,7 @@ export default [
                 {
                     fields: {
                         file: {
-                            url: img2
+                            url: img1
                         }
                     }
                 }
@@ -99,7 +99,51 @@ export default [
             slug: 'item-5',
             type: 'custom',
             price: 500,
-            featured: false,
+            featured: true,
+            description: 'an amazing item from the world of items',
+            images: [
+                {
+                    fields: {
+                        file: {
+                            url: img1
+                        }
+                    }
+                }
+            ]
+        }
+    },
+    {
+        sys: {
+            id: '6'
+        },
+        fields: {
+            name: 'item 6',
+            slug: 'item-6',
+            type: 'custom',
+            price: 600,
+            featured: true,
+            description: 'an amazing item from the world of items',
+            images: [
+                {
+                    fields: {
+                        file: {
+                            url: img1
+                        }
+                    }
+                }
+            ]
+        }
+    },
+    {
+        sys: {
+            id: '7'
+        },
+        fields: {
+            name: 'item 7',
+            slug: 'item-7',
+            type: 'custom',
+            price: 700,
+            featured: true,
             description: 'an amazing item from the world of items',
             images: [
                 {
