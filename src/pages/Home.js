@@ -8,7 +8,7 @@ export default function Home() {
         <>
             <Hero>
                 <Banner title="TIM STARK" subtitle="Full-Stack Developer">
-                    <div className="btn btn-primary">view projects</div>
+                    <div className="btn btn-primary">shop now</div>
                 </Banner>
             </Hero>
             <Featured />
