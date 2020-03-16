@@ -15,12 +15,16 @@ export default class Featured extends Component {
         });
 
         return (
-            <section>
-                <Title title="featured items" />
-                <div className="featured-items-center">
-                    {loading ? <Loading /> : items}
+            <div className="featured-section">
+                <div className="container-wrapper">
+                    <section className="featured-container">
+                        <Title title="featured selection" />
+                        <div className="featured-items-center">
+                            {loading ? <Loading /> : items}
+                        </div>
+                    </section>
                 </div>
-            </section>
+            </div>
         )
     }
 }
