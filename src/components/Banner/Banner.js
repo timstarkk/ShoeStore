@@ -15,7 +15,7 @@ export default function Banner({ children, title, subtitle }) {
                     <FaGithub />
                 </a>
             </div> */}
-            {/* {children} */}
+            {children}
         </div>
     )
 }
