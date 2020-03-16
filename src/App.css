@@ -17,6 +17,7 @@
   --lightDarkGrey: #cecece;
   --darkGrey: #202529;
   --mainTransition: all 0.0s linear;
+  --secondTransition: all .1s linear;
   --mainSpacing: .0625em;
   --lightShadow: 2px 5px 3px 0px rgba(0, 0, 0, 0.5);
   --darkShadow: 4px 10px 5px 0px rgba(0, 0, 0, 0.5);
@@ -33,6 +34,7 @@ body {
   font-family: 'nunito';
   line-height: 1.4;
   overflow-x: hidden;
+  overflow-y: hidden;
 }
 h1 {
   font-weight: 700;
