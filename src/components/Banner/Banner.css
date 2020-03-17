@@ -63,10 +63,18 @@
     .icon-button:hover {
       color: rgba(255, 255, 255, 0.5);
     }
-    
-    @media screen and (min-width: 576px) {
+    @media screen and (max-width: 575px) {
+        .banner {
+            position: relative;
+            top: 3rem;
+        }
+    }
+
+    @media screen and (min-width: 576px) and (max-width: 991px) {
     .banner {
         padding: 2rem 3rem;
+        position: relative;
+        top: 3rem;
     }
     .banner h1 {
         font-size: 4rem;
