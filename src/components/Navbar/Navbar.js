@@ -32,7 +32,7 @@ export default class Navbar extends Component {
             <nav className={"navbar " + (this.state.scrolled ? "nav-scrolled" : "")}>
                 <div className="nav-center">
                     <div className="nav-header">
-                        <Link to="#top" className="text-link">
+                        <Link to="#" className="text-link">
                             <div className="logo-div">
                                 <p className={"logo-text " + (this.state.scrolled ? "nav-scrolled" : "")}>
                                     ShoeStore
@@ -46,7 +46,13 @@ export default class Navbar extends Component {
                     </div>
                     <ul className={this.state.isOpen ? "nav-links show-nav nav-scrolled" : "nav-links " + (this.state.scrolled ? 'nav-scrolled' : '')}>
                         <li>
-                            <Link to="/about">About</Link>
+                            <Link to="#">Home</Link>
+                        </li>
+                        <li>
+                            <Link to="#">Store</Link>
+                        </li>
+                        <li>
+                            <Link to="#">About</Link>
                         </li>
                     </ul>
                 </div >
