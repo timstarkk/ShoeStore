@@ -1,0 +1,11 @@
+.footer-section {
+    width: 100vw;
+    height: 240px;
+}
+
+.footer-section div {
+    width: 5rem;
+    height: 5px;
+    margin: 0 auto;
+    background: var(--primaryColor);
+  }
