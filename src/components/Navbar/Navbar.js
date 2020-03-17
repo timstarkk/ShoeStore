@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import './Navbar.css';
 // import logo from '../../images/logo.png';
 import { GoThreeBars as Hamburger } from "react-icons/go";
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 
 
-export default class Navbar extends Component {
+class Navbar extends Component {
     state = {
         isOpen: false,
         scrolled: false
@@ -25,6 +25,10 @@ export default class Navbar extends Component {
 
     componentDidMount() {
         window.addEventListener("scroll", this.listenScrollEvent)
+    }
+
+    getLocation() {
+        return this.props.location.pathname;
     }
 
     render() {
@@ -59,4 +63,6 @@ export default class Navbar extends Component {
             </nav >
         );
     }
-}
+};
+
+export default withRouter(Navbar);
