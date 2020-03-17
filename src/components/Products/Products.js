@@ -3,8 +3,8 @@ import './Products.css';
 
 export default function Products() {
     return (
-        <div>
+        <section className="products-section">
             hello from products
-        </div>
+        </section>
     )
 }
