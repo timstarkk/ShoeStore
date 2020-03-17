@@ -1,5 +1,17 @@
 import img1 from './images/placeholder480.jpg';
-import img2 from './images/placeholder190.jpg'
+import img2 from './images/placeholder190.jpg';
+
+import sneakerImage from './images/sneakerImage.jpeg';
+
+import sneaker1 from './images/sneaker1.jpg';
+import sneaker2 from './images/sneaker2.jpg';
+import sneaker3 from './images/sneaker3.jpg';
+import sneaker4 from './images/sneaker4.jpg';
+import sneaker5 from './images/sneaker5.jpg';
+import sneaker6 from './images/sneaker6.jpg';
+import sneaker7 from './images/sneaker7.jpg';
+import sneaker8 from './images/sneaker8.jpg';
+import sneaker9 from './images/sneaker9.jpg';
 
 export default [
     {
@@ -17,7 +29,7 @@ export default [
                 {
                     fields: {
                         file: {
-                            url: img1
+                            url: sneaker1
                         }
                     }
                 }
@@ -39,7 +51,7 @@ export default [
                 {
                     fields: {
                         file: {
-                            url: img1
+                            url: sneaker2
                         }
                     }
                 }
@@ -61,7 +73,7 @@ export default [
                 {
                     fields: {
                         file: {
-                            url: img1
+                            url: sneaker3
                         }
                     }
                 }
@@ -83,7 +95,7 @@ export default [
                 {
                     fields: {
                         file: {
-                            url: img1
+                            url: sneaker4
                         }
                     }
                 }
@@ -105,7 +117,7 @@ export default [
                 {
                     fields: {
                         file: {
-                            url: img1
+                            url: sneaker5
                         }
                     }
                 }
@@ -127,7 +139,7 @@ export default [
                 {
                     fields: {
                         file: {
-                            url: img1
+                            url: sneaker6
                         }
                     }
                 }
@@ -149,7 +161,7 @@ export default [
                 {
                     fields: {
                         file: {
-                            url: img1
+                            url: sneaker7
                         }
                     }
                 }
