@@ -55,7 +55,7 @@
     color: var(--mainBlack);
   }
   .nav-links.nav-store a:hover {
-    color: var(--primaryColor);
+    color: var(--mainBlack);
   }
   .show-nav {
     height: auto;
