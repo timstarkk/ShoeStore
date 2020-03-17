@@ -2,6 +2,7 @@ import React from 'react'
 import Hero from '../components/Hero/Hero';
 import Banner from '../components/Banner/Banner';
 import Featured from '../components/Featured/Featured';
+import Intro from '../components/Intro/Intro';
 
 export default function Home() {
     return (
@@ -11,6 +12,7 @@ export default function Home() {
                     <div className="btn btn-primary">shop now</div>
                 </Banner>
             </Hero>
+            <Intro />
             <Featured />
         </>
     )
