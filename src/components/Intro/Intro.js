@@ -1,7 +1,7 @@
 import React from 'react';
 import './Intro.css';
 import Title from '../Title/Title';
-import Image from '../../images/placeholder480.jpg';
+import Image from '../../images/sneakerImage.jpeg';
 
 export default function Intro() {
     return (
