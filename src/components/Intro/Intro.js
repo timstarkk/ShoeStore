@@ -15,8 +15,8 @@ export default function Intro() {
             <div className="intro-feature">
                 <img src={Image} alt="dsfasd" />
                 <div className="intro-feature-text">
-                    <h4>hello from in here</h4>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident ex inventore, sint asperiores sequi accusantium soluta consequatur reiciendis illo ad incidunt, perspiciatis modi iure architecto voluptas, quidem doloremque vitae porro?</p>
+                    <h4>only the best</h4>
+                    <p>Our selection is handpicked from across the world by a seasoned team of individuals who have a proven taste for the highest quality footwear. We look and find the hidden gems, so you don't have to.</p>
                     <div className="btn-container">
                         <div className="btn btn-primary">get some</div>
                     </div>
