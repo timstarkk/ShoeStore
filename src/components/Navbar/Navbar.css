@@ -7,6 +7,11 @@
     background: transparent;
     z-index: 1;
   }
+
+  .nav-store {
+    color: black;
+  }
+
   .nav-header {
     display: flex;
     justify-content: space-between;
@@ -20,6 +25,9 @@
   .nav-icon {
     font-size: 1.5rem;
     color: var(--mainWhite);
+  }
+  .nav-icon.nav-store {
+    color: var(--mainBlack);
   }
   .nav-links {
     height: 0;
@@ -43,6 +51,12 @@
   .nav-links a:hover {
     color: var(--mainWhite, 30%);
   }
+  .nav-links.nav-store a {
+    color: var(--mainBlack);
+  }
+  .nav-links.nav-store a:hover {
+    color: var(--primaryColor);
+  }
   .show-nav {
     height: auto;
   }
@@ -62,7 +76,9 @@
     font-weight: 700;
     letter-spacing: var(--mainSpacing);
   }
-  
+  .logo-text.nav-store {
+    color: var(--mainBlack);
+  }
   
   .navbar.nav-scrolled {
     background-color: var(--mainGrey);
