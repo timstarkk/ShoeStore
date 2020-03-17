@@ -15,5 +15,10 @@
 
 .footer-section p {
     margin-top: 4rem;
+    margin-bottom: 1rem;
+}
+
+.footer-section h4 {
+    font-weight: 400;
     margin-bottom: 4rem;
 }
