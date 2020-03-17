@@ -33,27 +33,27 @@ class Navbar extends Component {
 
     render() {
         return (
-            <nav className={"navbar " + (this.state.scrolled ? "nav-scrolled" : "" + (this.getLocation() === "/store" ? "nav-store" : ""))}>
+            <nav className={"navbar " + (this.state.scrolled ? "nav-scrolled" : "")}>
                 <div className="nav-center">
                     <div className="nav-header">
-                        <Link to="#" className="text-link">
+                        <Link to="/" className="text-link">
                             <div className="logo-div">
-                                <p className={"logo-text " + (this.state.scrolled ? "nav-scrolled" : "")}>
+                                <p className={"logo-text " + (this.state.scrolled ? "nav-scrolled" : "") + (this.getLocation() === "/store" ? "nav-store" : "")}>
                                     ShoeStore
                                 </p>
                             </div>
                             {/* <img src={logo} alt="logo" style={{ width: "250px", height: "auto" }} /> */}
                         </Link>
                         <button type="button" className="nav-btn" onClick={this.handleToggle}>
-                            <Hamburger className={"nav-icon " + (this.state.scrolled ? 'nav-scrolled' : '')} />
+                            <Hamburger className={"nav-icon " + (this.state.scrolled ? 'nav-scrolled' : '') + (this.getLocation() === "/store" ? "nav-store" : "")} />
                         </button>
                     </div>
-                    <ul className={this.state.isOpen ? "nav-links show-nav nav-scrolled" : "nav-links " + (this.state.scrolled ? 'nav-scrolled' : '')}>
+                    <ul className={this.state.isOpen ? "nav-links show-nav nav-scrolled" : "nav-links " + (this.state.scrolled ? 'nav-scrolled' : '') + (this.getLocation() === "/store" ? "nav-store" : "")}>
                         <li>
-                            <Link to="#">Home</Link>
+                            <Link to="/">Home</Link>
                         </li>
                         <li>
-                            <Link to="#">Store</Link>
+                            <Link to="/store">Store</Link>
                         </li>
                         <li>
                             <Link to="#">About</Link>
