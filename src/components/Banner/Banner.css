@@ -8,6 +8,7 @@
     text-transform: capitalize;
     letter-spacing: var(--mainSpacing);
     border-radius: 3px;
+    /* border: 3px solid white; */
     height: 42vh;
     }
     .banner h1 {
@@ -21,6 +22,7 @@
         background-clip: text;
         font-weight: 400;
         margin-bottom: 0px;
+        margin-bottom: 4rem;
     }
     .banner h2 {
         max-width: 20rem;
@@ -29,7 +31,7 @@
     }
     .banner p {
     font-size: 1.2rem;
-    margin-bottom: 2rem;
+    margin-bottom: 3rem;
     }
     
     .banner-subtitle{
