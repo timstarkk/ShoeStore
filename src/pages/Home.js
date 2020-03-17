@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 import Hero from '../components/Hero/Hero';
 import Banner from '../components/Banner/Banner';
 import Featured from '../components/Featured/Featured';
@@ -10,7 +11,9 @@ export default function Home() {
         <>
             <Hero>
                 <Banner title="Latest" subtitle="soles and laces">
-                    <div className="btn btn-primary">shop now</div>
+                    <Link to='/store'>
+                        <div className="btn btn-primary">shop now</div>
+                    </Link>
                 </Banner>
             </Hero>
             <Intro />
