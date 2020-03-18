@@ -12,6 +12,9 @@ import sneaker6 from './images/sneaker6.jpg';
 import sneaker7 from './images/sneaker7.jpg';
 import sneaker8 from './images/sneaker8.jpg';
 import sneaker9 from './images/sneaker9.jpg';
+import sneaker10 from './images/sneaker10.jpg';
+import sneaker11 from './images/sneaker11.jpg';
+import sneaker12 from './images/sneaker12.jpg';
 
 export default [
     {
@@ -162,6 +165,94 @@ export default [
                     fields: {
                         file: {
                             url: sneaker7
+                        }
+                    }
+                }
+            ]
+        }
+    },
+    {
+        sys: {
+            id: '8'
+        },
+        fields: {
+            name: 'item 8',
+            slug: 'item-8',
+            type: 'custom',
+            price: 800,
+            featured: false,
+            description: 'an amazing item from the world of items',
+            images: [
+                {
+                    fields: {
+                        file: {
+                            url: sneaker8
+                        }
+                    }
+                }
+            ]
+        }
+    },
+    {
+        sys: {
+            id: '9'
+        },
+        fields: {
+            name: 'item 9',
+            slug: 'item-9',
+            type: 'custom',
+            price: 900,
+            featured: false,
+            description: 'an amazing item from the world of items',
+            images: [
+                {
+                    fields: {
+                        file: {
+                            url: sneaker9
+                        }
+                    }
+                }
+            ]
+        }
+    },
+    {
+        sys: {
+            id: '10'
+        },
+        fields: {
+            name: 'item 10',
+            slug: 'item-10',
+            type: 'custom',
+            price: 1000,
+            featured: false,
+            description: 'an amazing item from the world of items',
+            images: [
+                {
+                    fields: {
+                        file: {
+                            url: sneaker10
+                        }
+                    }
+                }
+            ]
+        }
+    },
+    {
+        sys: {
+            id: '11'
+        },
+        fields: {
+            name: 'item 11',
+            slug: 'item-11',
+            type: 'custom',
+            price: 1100,
+            featured: false,
+            description: 'an amazing item from the world of items',
+            images: [
+                {
+                    fields: {
+                        file: {
+                            url: sneaker11
                         }
                     }
                 }
