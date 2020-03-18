@@ -4,7 +4,7 @@ import './App.css';
 
 import Home from './pages/Home';
 import Store from './pages/Store';
-import SingleItem from './pages/SingleItem';
+import ItemPage from './pages/ItemPage';
 import Navbar from './components/Navbar/Navbar';
 
 function App() {
@@ -14,7 +14,7 @@ function App() {
       <Switch>
         <Route exact path="/" component={Home} />
         <Route exact path="/store" component={Store} />
-        <Route exact path="/store/:slug" component={SingleItem} />
+        <Route exact path="/store/:slug" component={ItemPage} />
       </Switch>
     </>
   );
