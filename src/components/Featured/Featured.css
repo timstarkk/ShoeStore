@@ -13,13 +13,6 @@
     cursor: pointer;
 }
 
-.container-wrapper {
-    /* border: 2px solid red; */
-    width: 100vw;
-    max-width: 1000px;
-    text-align: center;
-}
-
 .featured-container {
     padding: 2rem, 0rem;
 }
