@@ -8,7 +8,7 @@
     z-index: 1;
   }
 
-  .nav-store {
+  .nav-white {
     color: black;
   }
 
@@ -26,7 +26,7 @@
     font-size: 1.5rem;
     color: var(--mainWhite);
   }
-  .nav-icon.nav-store {
+  .nav-icon.nav-white {
     color: var(--mainBlack);
   }
   .nav-links {
@@ -51,10 +51,10 @@
   .nav-links a:hover {
     color: var(--mainWhite, 30%);
   }
-  .nav-links.nav-store a {
+  .nav-links.nav-white a {
     color: var(--mainBlack);
   }
-  .nav-links.nav-store a:hover {
+  .nav-links.nav-white a:hover {
     color: var(--mainBlack);
   }
   .show-nav {
@@ -76,7 +76,7 @@
     font-weight: 700;
     letter-spacing: var(--mainSpacing);
   }
-  .logo-text.nav-store {
+  .logo-text.nav-white {
     color: var(--mainBlack);
   }
   
