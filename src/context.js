@@ -53,7 +53,7 @@ class ItemProvider extends Component {
         return (
             <ItemContext.Provider value={{
                 ...this.state,
-                // getRoom: this.getRoom,
+                getItem: this.getItem,
                 // handleChange: this.handlechange
             }}>
                 {this.props.children}
