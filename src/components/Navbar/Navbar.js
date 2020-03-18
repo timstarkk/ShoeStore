@@ -38,17 +38,17 @@ class Navbar extends Component {
                     <div className="nav-header">
                         <Link to="/" className="text-link">
                             <div className="logo-div">
-                                <p className={"logo-text " + (this.state.scrolled ? "nav-scrolled" : "") + (this.getLocation() === "/store" ? " nav-store" : "")}>
+                                <p className={"logo-text " + (this.state.scrolled ? "nav-scrolled" : "") + (this.getLocation() !== '/' ? " nav-white" : "")}>
                                     ShoeStore
                                 </p>
                             </div>
                             {/* <img src={logo} alt="logo" style={{ width: "250px", height: "auto" }} /> */}
                         </Link>
                         <button type="button" className="nav-btn" onClick={this.handleToggle}>
-                            <Hamburger className={"nav-icon " + (this.state.scrolled ? 'nav-scrolled' : '') + (this.getLocation() === "/store" ? " nav-store" : "")} />
+                            <Hamburger className={"nav-icon " + (this.state.scrolled ? 'nav-scrolled' : '') + (this.getLocation() !== '/' ? " nav-white" : "")} />
                         </button>
                     </div>
-                    <ul className={this.state.isOpen ? "nav-links show-nav nav-scrolled" : "nav-links " + (this.state.scrolled ? 'nav-scrolled' : '') + (this.getLocation() === "/store" ? " nav-store" : "")}>
+                    <ul className={this.state.isOpen ? "nav-links show-nav nav-scrolled" : "nav-links " + (this.state.scrolled ? 'nav-scrolled' : '') + (this.getLocation() !== '/' ? " nav-white" : "")}>
                         <li>
                             <Link to="/">Home</Link>
                         </li>
