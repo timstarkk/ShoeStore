@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ItemContext } from '../context';
+import { ItemContext } from '../../context';
 import { Link } from 'react-router-dom';
 
 export default class ItemPage extends Component {
