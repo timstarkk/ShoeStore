@@ -42,7 +42,12 @@ class ItemProvider extends Component {
         return tempItems;
     };
 
+    getItem = (slug) => {
+        let tempItems = [...this.state.shopItems];
+        const item = tempItems.find(item => item.slug === slug);
 
+        return item;
+    }
 
     render() {
         return (
