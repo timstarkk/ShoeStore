@@ -17,7 +17,6 @@ class ItemProvider extends Component {
 
     componentDidMount() {
         let shopItems = this.formatData(items);
-        console.log(shopItems);
         let featuredItems = shopItems.filter(item => item.featured === true)
         let maxPrice = Math.max(...shopItems.map(item => item.price));
         this.setState({
