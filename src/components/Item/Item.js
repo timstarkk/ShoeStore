@@ -7,13 +7,14 @@ export default function Item({ item }) {
     const { name, slug, images, price } = item;
     return (
         <article className="item">
-            <div className="img-container">
+            {/* <Link to={`/rooms/${slug}`}> */}
+            <Link to={`/store/${slug}`} className="img-container link">
                 <img src={images[0] || defaultImg} alt="item option" />
-                {/* <Link to={`/rooms/${slug}`} className="btn-primary room-link">Features</Link> */}
                 <div className="price-top">
                     <h6>{name} - ${price}</h6>
                 </div>
-            </div>
+            </Link>
+            {/* </Link> */}
         </article>
     )
 };
