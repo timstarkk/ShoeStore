@@ -43,6 +43,9 @@ export default class ItemPage extends Component {
                             </div>
                             <div className="item-text-area">
                                 <h4>{name}</h4>
+                                <h5>${price}</h5>
+                                <p>Shipping calculated at checkout.</p>
+                                <div className="line"></div>
                             </div>
                         </div>
                     </div>
