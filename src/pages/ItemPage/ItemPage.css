@@ -1,5 +1,5 @@
 .item-page {
-    padding-top: 66px;
+    padding-top: 100px;
     display: flex;
     justify-content: center;
 }
@@ -22,7 +22,12 @@
 .item-text-area {
     border: 2px solid gold;
     height: 800px;
-    padding: 2rem;
+    padding: 4rem 2rem;
+}
+
+.item-text-area p {
+    font-size: 17px;
+    color: #565656
 }
 
 .item-page h4 {
@@ -30,4 +35,20 @@
     letter-spacing: var(--mainSpacing);
     text-transform: capitalize;
     margin-bottom: 1rem;
+}
+
+.item-page .line {
+    width: 5rem;
+    height: 5px;
+    margin: 0 auto;
+    margin-top: 1rem;
+    background: var(--primaryColor);
+    margin-bottom: 4rem;
+  }
+
+.item-page h5 {
+    color: var(--primaryColor);
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    font-weight: bold;
 }
