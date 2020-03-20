@@ -20,7 +20,7 @@
 }
 
 .item-text-area {
-    border: 2px solid gold;
+    /* border: 2px solid gold; */
     height: 800px;
     padding: 4rem 2rem;
 }
