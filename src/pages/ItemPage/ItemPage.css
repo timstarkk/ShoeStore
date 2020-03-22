@@ -11,12 +11,13 @@
 }
 
 .item-img-area {
+    /* border: 2px solid green; */
     padding: 2rem;
 }
 
 .item-grid img {
-    max-height: 560px;
-    max-width: 560px;
+    width: 560px;
+    max-width: 50vw;
 }
 
 .item-text-area {
@@ -52,3 +53,19 @@
     font-size: 18px;
     font-weight: bold;
 }
+
+@media (max-width: 590px) {
+    
+    .item-grid {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        max-width: 400px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .item-grid img {
+        max-width: 80vw;
+    }
+  }
