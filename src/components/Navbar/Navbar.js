@@ -33,7 +33,7 @@ class Navbar extends Component {
 
     render() {
         return (
-            <nav className={"navbar " + (this.state.scrolled ? "nav-scrolled" : "")}>
+            <nav className={"navbar " + (this.state.scrolled ? "nav-scrolled" : "") + (this.getLocation() !== '/' ? " nav-white" : "")}>
                 <div className="nav-center">
                     <div className="nav-header">
                         <Link to="/" className="text-link">
