@@ -46,6 +46,17 @@ export default class ItemPage extends Component {
                                 <h5>${price}</h5>
                                 <p>Shipping calculated at checkout.</p>
                                 <div className="line"></div>
+                                <div className="add-to-cart">
+                                    <div className="minus-one">
+
+                                    </div>
+                                    <div className="num-display">
+
+                                    </div>
+                                    <div className="plus-one">
+
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
