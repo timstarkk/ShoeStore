@@ -44,7 +44,7 @@
     margin: 0 auto;
     margin-top: 1rem;
     background: var(--primaryColor);
-    margin-bottom: 4rem;
+    margin-bottom: 2rem;
   }
 
 .item-page h5 {
@@ -53,6 +53,30 @@
     font-size: 18px;
     font-weight: bold;
 }
+
+.add-to-cart {
+    border: 2px solid darkred;
+    display: flex;
+    justify-content: center;
+}
+
+.minus-one {
+    border: 2px solid gold;
+    width: 2rem;
+    height: 2rem;
+}
+.plus-one {
+    border: 2px solid gold;
+    width: 2rem;
+    height: 2rem;
+}
+.num-display {
+    border: 2px solid green;
+    height: 2rem;
+    width: 3rem;
+    margin: 0rem .25rem;
+}
+
 
 @media (max-width: 590px) {
     
