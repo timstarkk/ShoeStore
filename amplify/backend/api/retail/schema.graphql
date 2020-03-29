@@ -1,0 +1,10 @@
+type ShoppingCart @model {
+  id: ID!
+  userSub: String!
+  items: [Item!]
+}
+
+type Item {
+  name: String!
+  description: String
+}
