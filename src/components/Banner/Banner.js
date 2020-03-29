@@ -1,6 +1,5 @@
 import React from 'react';
 import './Banner.css';
-import { FaGithub, FaLinkedin } from 'react-icons/fa';
 
 export default function Banner({ children, title, subtitle }) {
     return (
