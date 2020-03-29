@@ -1,7 +1,7 @@
-import img1 from './images/placeholder480.jpg';
-import img2 from './images/placeholder190.jpg';
+// import img1 from './images/placeholder480.jpg';
+// import img2 from './images/placeholder190.jpg';
 
-import sneakerImage from './images/sneakerImage.jpeg';
+// import sneakerImage from './images/sneakerImage.jpeg';
 
 import sneaker1 from './images/sneaker1.jpg';
 import sneaker2 from './images/sneaker2.jpg';
@@ -14,7 +14,7 @@ import sneaker8 from './images/sneaker8.jpg';
 import sneaker9 from './images/sneaker9.jpg';
 import sneaker10 from './images/sneaker10.jpg';
 import sneaker11 from './images/sneaker11.jpg';
-import sneaker12 from './images/sneaker12.jpg';
+// import sneaker12 from './images/sneaker12.jpg';
 
 export default [
     {
