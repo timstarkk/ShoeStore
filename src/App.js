@@ -1,14 +1,17 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import './App.css';
+import Amplify, { API, graphqlOperation, Auth } from 'aws-amplify';
+import config from './aws-exports';
 
 import ScrollToTop from './components/ScrollToTop/ScrollToTop';
 import Home from './pages/Home';
 import Store from './pages/Store';
 import ItemPage from './pages/ItemPage/ItemPage';
-import Auth from './pages/Auth';
+import AuthPage from './pages/AuthPage';
 import Navbar from './components/Navbar/Navbar';
 
+Amplify.configure(config);
 function App() {
   return (
     <>
@@ -18,8 +21,8 @@ function App() {
           <Route exact path="/" component={Home} />
           <Route exact path="/store" component={Store} />
           <Route exact path="/store/:slug" component={ItemPage} />
-          <Route exact path="/signup" component={Auth} />
-          <Route exact path="/signin" component={Auth} />
+          <Route exact path="/signup" component={AuthPage} />
+          <Route exact path="/signin" component={AuthPage} />
         </Switch>
       </ScrollToTop>
     </>
