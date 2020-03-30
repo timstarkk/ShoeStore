@@ -28,7 +28,7 @@ export default class ItemPage extends Component {
             </div>
         }
 
-        const { name, type, price, description, images } = item;
+        const { name, price, images } = item;
 
         const img = images[0];
         console.log(images);
