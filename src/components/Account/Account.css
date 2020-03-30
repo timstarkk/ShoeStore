@@ -22,14 +22,19 @@
 }
 
 .account-section form {
-    max-width: 450px;
+    max-width: 300px;
 }
 
 .account-section form input {
+    border: 1px solid var(--lightDarkGrey);
     width: 100%;
     height: 3rem;
     margin-bottom: .5rem;
     border-radius: 3px;
+    box-shadow: 0 .05rem .05rem 0 rgba(0,0,0,.15);
+    -webkit-box-shadow: 0 .05rem .05rem 0 rgba(0,0,0,.15);
+    font-size: 18px;
+    padding-left: .5rem;
 }
 
 .account-section .container-wrapper {
@@ -37,3 +42,4 @@
     flex-direction: column;
     align-items: center;
 }
+
