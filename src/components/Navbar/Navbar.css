@@ -101,6 +101,10 @@
   .nav-links.nav-scrolled a:hover {
     cursor: pointer;
   }
+
+  #account-link {
+    font-size: 20px;
+  }
   
   @media screen and (min-width: 768px) {
     .nav-btn {
