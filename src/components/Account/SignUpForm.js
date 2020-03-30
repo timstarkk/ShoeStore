@@ -6,13 +6,13 @@ export default class SignUpForm extends Component {
     constructor(props) {
         super(props);
 
-        this.state = s{
+        this.state = {
             username: '',
-                password: '',
-                    email: '',
-                        phone_number: '',
-                            confirmationCode: '',
-                                signedUp: false
+            password: '',
+            email: '',
+            phone_number: '',
+            confirmationCode: '',
+            signedUp: false
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
