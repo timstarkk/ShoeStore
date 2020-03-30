@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import './App.css';
-import Amplify, { API, graphqlOperation, Auth } from 'aws-amplify';
+import Amplify from 'aws-amplify';
 import config from './aws-exports';
 
 import ScrollToTop from './components/ScrollToTop/ScrollToTop';
