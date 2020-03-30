@@ -58,3 +58,13 @@
     align-items: center;
 }
 
+.account-section a {
+    margin-top: 1rem;
+    color: grey;
+}
+
+.account-section form p {
+    color: grey;
+    font-size: 12px;
+    margin-bottom: 1rem;
+}
