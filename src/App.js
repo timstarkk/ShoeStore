@@ -8,7 +8,7 @@ import ScrollToTop from './components/ScrollToTop/ScrollToTop';
 import Home from './pages/Home';
 import Store from './pages/Store';
 import ItemPage from './pages/ItemPage/ItemPage';
-import AuthPage from './pages/AuthPage';
+import Account from './pages/Account';
 import Navbar from './components/Navbar/Navbar';
 
 Amplify.configure(config);
@@ -21,8 +21,8 @@ function App() {
           <Route exact path="/" component={Home} />
           <Route exact path="/store" component={Store} />
           <Route exact path="/store/:slug" component={ItemPage} />
-          <Route exact path="/signup" component={AuthPage} />
-          <Route exact path="/signin" component={AuthPage} />
+          <Route exact path="/account/signup" component={Account} />
+          <Route exact path="/account/signin" component={Account} />
         </Switch>
       </ScrollToTop>
     </>

@@ -1,8 +1,8 @@
 import React from 'react';
 import Footer from '../components/Footer/Footer';
-import SignUpForm from '../components/Auth/SignUpForm';
+import SignUpForm from '../components/Account/SignUpForm';
 
-export default function AuthPage() {
+export default function Account() {
     return (
         <>
             <SignUpForm />

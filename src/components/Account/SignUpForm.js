@@ -1,18 +1,18 @@
 import React, { Component } from 'react';
 import { Auth } from 'aws-amplify';
-import './Auth.css';
+import './Account.css';
 
 export default class SignUpForm extends Component {
     constructor(props) {
         super(props);
 
-        this.state = {
+        this.state = s{
             username: '',
-            password: '',
-            email: '',
-            phone_number: '',
-            confirmationCode: '',
-            signedUp: false
+                password: '',
+                    email: '',
+                        phone_number: '',
+                            confirmationCode: '',
+                                signedUp: false
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Auth } from 'aws-amplify';
+import './Account.css';
 
 export default class SignInForm extends Component {
     constructor(props) {
