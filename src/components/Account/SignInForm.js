@@ -59,12 +59,11 @@ export default class SignInForm extends Component {
                         <h4>Sign In To Your Account</h4>
                         <div className="line" />
                         <form onSubmit={this.handleSubmit}>
-                            <label>Username</label>
-                            <input type="text" name="username" onChange={this.handleChange} />
-                            <label>Password</label>
-                            <input type="text" name="password" onChange={this.handleChange} />
+                            <input type="text" name="username" placeholder="username" onChange={this.handleChange} />
+                            <input type="text" name="password" placeholder="password" onChange={this.handleChange} />
                             <button>Sign In</button>
                         </form>
+                        <a href="/account/signup">create an account</a>
                     </div>
                 </div>
             )
