@@ -45,18 +45,21 @@ export default class SignInForm extends Component {
 
         if (signedIn) {
             return (
-                <h1>You have signed in!
-                </h1>
+                <div className="account-section">
+                    <h1>You have signed in!</h1>
+                </div>
             )
         } else {
             return (
-                <form onSubmit={this.handleSubmit}>
-                    <label>Username</label>
-                    <input type="text" name="username" onChange={this.handleChange} />
-                    <label>Password</label>
-                    <input type="text" name="password" onChange={this.handleChange} />
-                    <button>Sign In</button>
-                </form>
+                <div className="account-section">
+                    <form onSubmit={this.handleSubmit}>
+                        <label>Username</label>
+                        <input type="text" name="username" onChange={this.handleChange} />
+                        <label>Password</label>
+                        <input type="text" name="password" onChange={this.handleChange} />
+                        <button>Sign In</button>
+                    </form>
+                </div>
             )
         }
     }
