@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import './Navbar.css';
 // import logo from '../../images/logo.png';
-import { GoThreeBars as Hamburger, GoPerson as AccountIcon } from "react-icons/go";
+import { GoThreeBars as Hamburger } from "react-icons/go";
+import { MdAccountCircle as AccountIcon } from "react-icons/md";
 import { Link, withRouter } from 'react-router-dom';
 
 
@@ -57,6 +58,9 @@ class Navbar extends Component {
                         </li>
                         <li>
                             <Link to="#">About</Link>
+                        </li>
+                        <li>
+                            <Link to="/account/signin"><AccountIcon id="account-link" /></Link>
                         </li>
                     </ul>
                 </div >
