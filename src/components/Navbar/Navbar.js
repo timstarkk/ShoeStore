@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './Navbar.css';
 // import logo from '../../images/logo.png';
-import { GoThreeBars as Hamburger } from "react-icons/go";
+import { GoThreeBars as Hamburger, GoPerson as AccountIcon } from "react-icons/go";
 import { Link, withRouter } from 'react-router-dom';
 
 
