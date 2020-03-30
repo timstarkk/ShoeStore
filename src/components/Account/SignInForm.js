@@ -46,19 +46,26 @@ export default class SignInForm extends Component {
         if (signedIn) {
             return (
                 <div className="account-section">
-                    <h1>You have signed in!</h1>
+                    <div className="container-wrapper">
+                        <div className="line" />
+                        <h1>You have signed in!</h1>
+                    </div>
                 </div>
             )
         } else {
             return (
                 <div className="account-section">
-                    <form onSubmit={this.handleSubmit}>
-                        <label>Username</label>
-                        <input type="text" name="username" onChange={this.handleChange} />
-                        <label>Password</label>
-                        <input type="text" name="password" onChange={this.handleChange} />
-                        <button>Sign In</button>
-                    </form>
+                    <div className="container-wrapper">
+                        <h4>Sign In To Your Account</h4>
+                        <div className="line" />
+                        <form onSubmit={this.handleSubmit}>
+                            <label>Username</label>
+                            <input type="text" name="username" onChange={this.handleChange} />
+                            <label>Password</label>
+                            <input type="text" name="password" onChange={this.handleChange} />
+                            <button>Sign In</button>
+                        </form>
+                    </div>
                 </div>
             )
         }

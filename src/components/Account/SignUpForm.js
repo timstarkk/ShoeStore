@@ -55,29 +55,33 @@ export default class SignUpForm extends Component {
         if (signedUp) {
             return (
                 <div className="account-section">
-                    <form onSubmit={this.handleSubmit}>
-                        <label>Username</label>
-                        <input type="text" name="username" onChange={this.handleChange} />
-                        <label>Confirmation Code</label>
-                        <input type="text" name="confirmationCode" onChange={this.handleChange} />
-                        <button>Confirm</button>
-                    </form>
+                    <div className="container-wrapper">
+                        <h4>Confirm Account</h4>
+                        <div className="line" />
+                        <form onSubmit={this.handleSubmit}>
+                            <label>Username</label>
+                            <input type="text" name="username" onChange={this.handleChange} />
+                            <label>Confirmation Code</label>
+                            <input type="text" name="confirmationCode" onChange={this.handleChange} />
+                            <button>Confirm</button>
+                        </form>
+                    </div>
                 </div>
             )
         } else {
             return (
                 <div className="account-section">
-                    <form onSubmit={this.handleSubmit}>
-                        <label>Username</label>
-                        <input type="text" name="username" onChange={this.handleChange} />
-                        <label>Password</label>
-                        <input type="text" name="password" onChange={this.handleChange} />
-                        <label>Email</label>
-                        <input type="text" name="email" onChange={this.handleChange} />
-                        <label>Phone Number</label>
-                        <input type="text" name="phone_number" onChange={this.handleChange} />
-                        <button>Sign Up</button>
-                    </form>
+                    <div className="container-wrapper">
+                        <h4>Create Account</h4>
+                        <div className="line" />
+                        <form onSubmit={this.handleSubmit}>
+                            <input type="text" name="username" placeholder="username" onChange={this.handleChange} />
+                            <input type="text" name="password" placeholder="password" onChange={this.handleChange} />
+                            <input type="text" name="email" placeholder="email address" onChange={this.handleChange} />
+                            <input type="text" name="phone_number" placeholder="phone number" onChange={this.handleChange} />
+                            <button>Sign Up</button>
+                        </form>
+                    </div>
                 </div>
             )
         }
