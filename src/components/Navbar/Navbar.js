@@ -19,6 +19,7 @@ class Navbar extends Component {
 
         this.accountButtonClick = this.accountButtonClick.bind(this);
         this.closeMenu = this.closeMenu.bind(this);
+        this.handleSignOut = this.handleSignOut.bind(this);
     }
 
     listenScrollEvent = e => {
@@ -65,6 +66,13 @@ class Navbar extends Component {
         });
     }
 
+    handleSignOut() {
+        console.log('you clicked sign out')
+        Auth.signOut()
+            .then(data => console.log(data))
+            .catch(err => console.log(err));
+    }
+
     render() {
         return (
             <>
@@ -103,10 +111,13 @@ class Navbar extends Component {
                 {
                     this.state.showAccountMenu
                         ? (
-                            <div className="account-menu">
-                                <button> Menu item 1 </button>
-                                <button> Menu item 2 </button>
-                                <button> Menu item 3 </button>
+                            <div className="account-container-container">
+                                <div className="account-container">
+                                    <div className="account-menu">
+                                        <button className="btn"> Sign In </button>
+                                        <button className="btn sign-out" onClick={() => this.handleSignOut()}> Sign Out </button>
+                                    </div>
+                                </div>
                             </div>
                         )
                         : (
