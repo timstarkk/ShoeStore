@@ -105,16 +105,57 @@
   #account-link {
     font-size: 20px;
   }
+
+
+  .account-menu {
+    z-index: 30;
+    height: 12rem;
+    width: 14rem;
+    margin: 0rem;
+    background-color: var(--mainGrey);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 1rem;
+  }
+
+  .account-menu .btn {
+    /* height: 2rem; */
+    width: 100%;
+    color: var(--primaryColor);
+  }
+
+  .account-menu .sign-out {
+    background-color: var(--primaryColor);
+    color: var(--mainWhite);
+  }
+  
+  .account-container-container {
+    position: fixed;
+    top: 64px;
+    left: 0;
+    width: 100vw;
+    padding: 0rem 2rem;
+    /* border: 2px solid gold; */
+  }
   
   @media screen and (min-width: 768px) {
     .nav-btn {
       display: none;
     }
     .nav-center {
+      width: 100%;
       max-width: 1170px;
       margin: 0 auto;
       display: flex;
       justify-content: space-between;
+    }
+    .account-container {
+      max-width: 1170px;
+      margin: 0 auto;
+      /* border: 2px solid red; */
+      display: flex;
+      justify-content: flex-end;
     }
     .nav-links {
       height: auto;
