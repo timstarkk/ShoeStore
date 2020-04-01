@@ -5,16 +5,21 @@ import { GoThreeBars as Hamburger } from "react-icons/go";
 import { MdAccountCircle as AccountIcon } from "react-icons/md";
 import { Link, withRouter } from 'react-router-dom';
 import { Auth } from 'aws-amplify';
+import { ItemContext } from '../../context';
 
 
 class Navbar extends Component {
-    constructor() {
+    static contextType = ItemContext;
+    constructor(props) {
         super();
 
         this.state = {
             isOpen: false,
             scrolled: false,
-            showAccountMenu: false
+            showAccountMenu: false,
+            isSignedIn: false,
+            currentUser: '',
+            setCurrentUser: '',
         }
 
         this.accountButtonClick = this.accountButtonClick.bind(this);
@@ -36,6 +41,12 @@ class Navbar extends Component {
 
     componentDidMount() {
         window.addEventListener("scroll", this.listenScrollEvent)
+
+        // const { setCurrentUser } = this.context;
+
+        // this.setState({
+        //     setCurrentUser
+        // })
     }
 
     getLocation() {
@@ -44,18 +55,33 @@ class Navbar extends Component {
 
     accountButtonClick() {
         // console.log('you clicked the account button')
+        const { currentUser, setCurrentUser } = this.context;
+        console.log(currentUser.username);
+
         Auth.currentSession()
             .then(data => {
                 let sub = data.accessToken.payload.sub;
+                let username = data.accessToken.payload.username;
+                let userInfo = data.accessToken.payload;
                 console.log(data);
                 console.log(sub);
-                // this.setState({
-                //     sub
-                // })
-            })
-            .catch(err => console.log(err));
 
-        this.setState({ showAccountMenu: true }, () => {
+                console.log(currentUser);
+
+                this.setState({
+                    isSignedIn: true,
+                    currentUser: username
+                })
+            })
+            .catch(err => {
+                console.log(err);
+                console.log(this.state.isSignedIn)
+            });
+
+        this.setState({
+            showAccountMenu: true,
+            setCurrentUser
+        }, () => {
             document.addEventListener('click', this.closeMenu);
         });
     }
@@ -71,6 +97,13 @@ class Navbar extends Component {
         Auth.signOut()
             .then(data => console.log(data))
             .catch(err => console.log(err));
+
+        this.state.setCurrentUser('');
+        this.setState({
+            currentUser: '',
+            isSignedIn: false
+        })
+        this.props.history.push('/');
     }
 
     render() {
@@ -114,8 +147,16 @@ class Navbar extends Component {
                             <div className="account-container-container">
                                 <div className="account-container">
                                     <div className="account-menu">
-                                        <button className="btn"> Sign In </button>
-                                        <button className="btn sign-out" onClick={() => this.handleSignOut()}> Sign Out </button>
+                                        {
+                                            this.state.isSignedIn ?
+                                                <p>hello, {this.state.currentUser}</p> :
+                                                <Link to="/account/signup"><button className="btn"> Sign Up </button></Link>
+                                        }
+                                        {
+                                            this.state.isSignedIn ?
+                                                <button className="btn featured-btn" onClick={() => this.handleSignOut()}> Sign Out </button> :
+                                                <Link to='/account/signin'><button className="btn featured-btn">Sign In</button></Link >
+                                        }
                                     </div>
                                 </div>
                             </div>
