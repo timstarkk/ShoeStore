@@ -13,6 +13,7 @@ class ItemProvider extends Component {
         price: 0,
         minPrice: 0,
         maxPrice: 0,
+        currentUser: {}
     };
 
     componentDidMount() {
@@ -48,12 +49,20 @@ class ItemProvider extends Component {
         return item;
     }
 
+    setCurrentUser = userInfo => {
+        console.log('setting user info');
+        console.log(userInfo);
+        this.setState({
+            currentUser: userInfo
+        })
+    }
+
     render() {
         return (
             <ItemContext.Provider value={{
                 ...this.state,
                 getItem: this.getItem,
-                // handleChange: this.handlechange
+                setCurrentUser: this.setCurrentUser
             }}>
                 {this.props.children}
             </ItemContext.Provider>
