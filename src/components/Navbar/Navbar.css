@@ -117,6 +117,7 @@
     flex-direction: column;
     justify-content: space-around;
     padding: 1rem;
+    text-align: center;
   }
 
   .account-menu .btn {
@@ -125,7 +126,7 @@
     color: var(--primaryColor);
   }
 
-  .account-menu .sign-out {
+  .account-menu .featured-btn {
     background-color: var(--primaryColor);
     color: var(--mainWhite);
   }
