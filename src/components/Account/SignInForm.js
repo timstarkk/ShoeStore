@@ -1,24 +1,34 @@
 import React, { Component } from 'react';
 import { Auth } from 'aws-amplify';
 import './Account.css';
+import { ItemContext } from '../../context';
 
 export default class SignInForm extends Component {
+    static contextType = ItemContext;
     constructor(props) {
         super(props);
 
         this.state = {
             username: '',
             password: '',
-            signedIn: false
+            signedIn: false,
+            setCurrentUser: ''
         }
+
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    handleSubmit(e) {
+
+    async handleSubmit(e) {
+        const { setCurrentUser } = this.context;
+        this.setState({
+            setCurrentUser
+        })
+
         e.preventDefault();
         const { signedIn, username, password, email, phone_number } = this.state;
-        Auth.signIn({
+        await Auth.signIn({
             username,
             password
         })
@@ -26,12 +36,22 @@ export default class SignInForm extends Component {
             .catch(error => console.log(error))
 
 
-        Auth.confirmSignIn(username)
+        await Auth.confirmSignIn(username)
             .then(() => console.log('confirmed sign up'))
             .catch(error => console.log(error))
 
+        await Auth.currentSession()
+            .then(data => {
+                let userInfo = data.accessToken.payload;
+                this.state.setCurrentUser(userInfo);
+            })
+            .catch(err => {
+                console.log(err.message);
+                console.log(this.state.signedIn)
+            });
+
         this.setState({
-            signedIn: true
+            signedIn: true,
         });
     }
 
@@ -60,7 +80,7 @@ export default class SignInForm extends Component {
                         <div className="line" />
                         <form onSubmit={this.handleSubmit}>
                             <input type="text" name="username" placeholder="username" onChange={this.handleChange} />
-                            <input type="text" name="password" placeholder="password" onChange={this.handleChange} />
+                            <input type="password" name="password" placeholder="password" onChange={this.handleChange} />
                             <button>Sign In</button>
                         </form>
                         <a href="/account/signup">create an account</a>
