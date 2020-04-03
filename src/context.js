@@ -18,7 +18,8 @@ class ItemProvider extends Component {
         price: 0,
         minPrice: 0,
         maxPrice: 0,
-        currentUser: {}
+        currentUser: {},
+        addAmount: 1
     };
 
     async componentDidMount() {
