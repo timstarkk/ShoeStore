@@ -1,7 +1,12 @@
 import React, { Component } from 'react';
-import items from './data';
+import query from './data';
+import Amplify, { API, graphqlOperation, Auth } from 'aws-amplify';
+import config from './aws-exports';
+import { getDefaultNormalizer } from '@testing-library/react';
 
+Amplify.configure(config);
 const ItemContext = React.createContext();
+let items = [];
 
 class ItemProvider extends Component {
     state = {
@@ -16,7 +21,28 @@ class ItemProvider extends Component {
         currentUser: {}
     };
 
-    componentDidMount() {
+    async componentDidMount() {
+        await API.graphql(graphqlOperation(query))
+            .then(data => {
+                let tempItems = data.data.listStoreItems.items;
+
+                for (let i = 0; i < tempItems.length; i++) {
+                    console.log(i);
+                    if (items.length === 0) {
+                        items.push(tempItems[i]);
+                    } else {
+                        for (let j = 0; j < items.length; j++) {
+                            if (tempItems[i].fields.price < items[j].fields.price) {
+                                items.splice(j, 0, tempItems[i]);
+                                break;
+                            } else if (tempItems[i].fields.price > items[j].fields.price && j === (items.length - 1)) {
+                                items.push(tempItems[i])
+                            }
+                        }
+                    }
+                }
+            })
+
         let shopItems = this.formatData(items);
         let featuredItems = shopItems.filter(item => item.featured === true)
         let maxPrice = Math.max(...shopItems.map(item => item.price));
@@ -32,8 +58,8 @@ class ItemProvider extends Component {
 
     formatData(items) {
         let tempItems = items.map(item => {
-            let id = item.sys.id;
-            let images = item.fields.images.map(images => images.fields.file.url);
+            let id = item.id;
+            let images = item.fields.images.map(images => images.imageFields.file.url);
             let tempItem = { ...item.fields, images, id }
 
             return tempItem
