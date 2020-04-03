@@ -23,7 +23,7 @@
 .item-text-area {
     /* border: 2px solid gold; */
     height: 800px;
-    padding: 4rem 2rem;
+    padding: 6rem 2rem;
 }
 
 .item-text-area p {
@@ -55,20 +55,22 @@
 }
 
 .add-to-cart {
-    border: 2px solid darkred;
+    /* border: 2px solid darkred; */
     display: flex;
     justify-content: center;
 }
 
 .minus-one {
-    border: 2px solid gold;
+    /* border: 2px solid gold; */
     width: 2rem;
     height: 2rem;
+    color: var(--primaryColor);
 }
 .plus-one {
-    border: 2px solid gold;
+    /* border: 2px solid gold; */
     width: 2rem;
     height: 2rem;
+    color: var(--primaryColor);
 }
 .num-display {
     border: 2px solid green;

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { ItemContext } from '../../context';
 import { Link } from 'react-router-dom';
+import { FaPlusCircle, FaMinusCircle } from "react-icons/fa";
 import './ItemPage.css';
 import Footer from '../../components/Footer/Footer';
 
@@ -47,15 +48,11 @@ export default class ItemPage extends Component {
                                 <p>Shipping calculated at checkout.</p>
                                 <div className="line"></div>
                                 <div className="add-to-cart">
-                                    <div className="minus-one">
-
-                                    </div>
+                                    <FaMinusCircle className="minus-one" />
                                     <div className="num-display">
 
                                     </div>
-                                    <div className="plus-one">
-
-                                    </div>
+                                    <FaPlusCircle className="plus-one" />
                                 </div>
                             </div>
                         </div>
