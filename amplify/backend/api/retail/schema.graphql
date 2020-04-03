@@ -8,3 +8,33 @@ type Item {
   name: String!
   description: String
 }
+
+
+
+
+type File {
+  url: String
+}
+
+type ImageFields {
+  file: File
+}
+
+type Images {
+  imageFields: ImageFields
+}
+
+type Fields {
+  name: String!
+  slug: String!
+  itemType: String
+  price: Int
+  featured: Boolean
+  description: String!
+  images: [Images]
+}
+
+type storeItem @model {
+  id: ID!
+  fields: Fields
+}
