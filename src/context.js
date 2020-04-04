@@ -69,7 +69,32 @@ class ItemProvider extends Component {
         return tempItems;
     };
 
-    getItem = (slug) => {
+    handleChange = event => {
+        const target = event.target;
+        const value = target.value;
+        const name = event.target.name;
+
+        console.log('handling event');
+        this.setState({
+            [name]: value
+        })
+    };
+
+    addAmountButton = direction => {
+        if (direction === 'minus') {
+            if (this.state.addAmount > 1) {
+                this.setState({
+                    addAmount: this.state.addAmount - 1
+                })
+            }
+        } else if (direction === 'plus') {
+            this.setState({
+                addAmount: this.state.addAmount + 1
+            })
+        }
+    };
+
+    getItem = slug => {
         let tempItems = [...this.state.shopItems];
         const item = tempItems.find(item => item.slug === slug);
 
@@ -89,7 +114,9 @@ class ItemProvider extends Component {
             <ItemContext.Provider value={{
                 ...this.state,
                 getItem: this.getItem,
-                setCurrentUser: this.setCurrentUser
+                setCurrentUser: this.setCurrentUser,
+                handleChange: this.handleChange,
+                addAmountButton: this.addAmountButton
             }}>
                 {this.props.children}
             </ItemContext.Provider>
