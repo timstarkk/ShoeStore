@@ -17,9 +17,8 @@ export default class ItemPage extends Component {
     }
 
     render() {
-        const { getItem } = this.context;
+        const { getItem, addAmount, handleChange, addAmountButton } = this.context;
         const item = getItem(this.state.slug);
-        console.log(item);
         if (!item) {
             return <div className="error">
                 <h3>item not found.</h3>
@@ -32,7 +31,6 @@ export default class ItemPage extends Component {
         const { name, price, images } = item;
 
         const img = images[0];
-        console.log(images);
 
         return (
             <>
@@ -48,11 +46,17 @@ export default class ItemPage extends Component {
                                 <p>Shipping calculated at checkout.</p>
                                 <div className="line"></div>
                                 <div className="add-to-cart">
-                                    <FaMinusCircle className="minus-one" />
+                                    <FaMinusCircle className="minus-one" onClick={() => addAmountButton('minus')} />
                                     <div className="num-display">
-
+                                        <input
+                                            type="text"
+                                            name="addAmount"
+                                            className="num-box"
+                                            value={addAmount}
+                                            onChange={handleChange}
+                                        />
                                     </div>
-                                    <FaPlusCircle className="plus-one" />
+                                    <FaPlusCircle className="plus-one" onClick={() => addAmountButton('plus')} />
                                 </div>
                             </div>
                         </div>
