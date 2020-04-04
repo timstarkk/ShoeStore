@@ -71,12 +71,20 @@
     width: 2rem;
     height: 2rem;
     color: var(--primaryColor);
+    z-index: 3;
 }
 .num-display {
     border: 2px solid green;
-    height: 2rem;
-    width: 3rem;
+    height: 2.5rem;
+    width: 3.75rem;
     margin: 0rem .25rem;
+}
+
+.num-box {
+    height: 100%;
+    width: 100%;
+    font-size: 18px;
+    text-align: center;
 }
 
 
