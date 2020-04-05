@@ -124,6 +124,14 @@
     width: 100%;
 }
 
+.error {
+    text-align: center;
+    text-transform: uppercase;
+    margin: 2rem 0;
+    margin-top: 8rem;
+    color: (var(--darkGrey), 0.2);
+  }
+
 @media (max-width: 590px) {
     .item-grid {
         display: flex;
