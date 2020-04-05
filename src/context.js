@@ -109,6 +109,10 @@ class ItemProvider extends Component {
         })
     }
 
+    handleAddToCart = event => {
+        console.log(this.state.currentUser);
+    }
+
     render() {
         return (
             <ItemContext.Provider value={{
@@ -116,7 +120,8 @@ class ItemProvider extends Component {
                 getItem: this.getItem,
                 setCurrentUser: this.setCurrentUser,
                 handleChange: this.handleChange,
-                addAmountButton: this.addAmountButton
+                addAmountButton: this.addAmountButton,
+                handleAddToCart: this.handleAddToCart
             }}>
                 {this.props.children}
             </ItemContext.Provider>
