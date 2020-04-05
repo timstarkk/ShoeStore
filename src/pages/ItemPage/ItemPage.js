@@ -46,17 +46,22 @@ export default class ItemPage extends Component {
                                 <p>Shipping calculated at checkout.</p>
                                 <div className="line"></div>
                                 <div className="add-to-cart">
-                                    <FaMinusCircle className="minus-one" onClick={() => addAmountButton('minus')} />
-                                    <div className="num-display">
-                                        <input
-                                            type="text"
-                                            name="addAmount"
-                                            className="num-box"
-                                            value={addAmount}
-                                            onChange={handleChange}
-                                        />
+                                    <div className="plus-minus-section">
+                                        <FaMinusCircle className="minus-one plus-minus-button" onClick={() => addAmountButton('minus')} />
+                                        <div className="num-display">
+                                            <input
+                                                type="text"
+                                                name="addAmount"
+                                                className="num-box"
+                                                value={addAmount}
+                                                onChange={handleChange}
+                                            />
+                                        </div>
+                                        <FaPlusCircle className="plus-one plus-minus-button" onClick={() => addAmountButton('plus')} />
                                     </div>
-                                    <FaPlusCircle className="plus-one" onClick={() => addAmountButton('plus')} />
+                                    <div className="btn btn-primary add-button">
+                                        add to cart
+                                    </div>
                                 </div>
                             </div>
                         </div>
