@@ -63,6 +63,9 @@ export default class ItemPage extends Component {
                                         add to cart
                                     </div>
                                 </div>
+                                <div className="description-area">
+                                    <p>this is the description area. this is the description area. this is the description area. this is the description area. this is the description area. this is the description area. this is the description area. this is the description area. this is the description area. this is the description area. this is the description area. this is the description area. </p>
+                                </div>
                             </div>
                         </div>
                     </div>
