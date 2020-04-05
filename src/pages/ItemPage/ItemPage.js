@@ -20,12 +20,16 @@ export default class ItemPage extends Component {
         const { getItem, addAmount, handleChange, addAmountButton, handleAddToCart } = this.context;
         const item = getItem(this.state.slug);
         if (!item) {
-            return <div className="error">
-                <h3>item not found.</h3>
-                <Link to='/store' className='btn btn-primary'>
-                    back to store
-                </Link>
-            </div>
+            return (setTimeout(function () {
+                return (
+                    <div className="error">
+                        <h3>item not found.</h3>
+                        <Link to='/store' className='btn btn-primary'>
+                            back to store
+                    </Link>
+                    </div>
+                )
+            }, 5000))
         }
 
         const { name, price, images } = item;
