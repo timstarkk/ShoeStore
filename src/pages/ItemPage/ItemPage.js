@@ -17,7 +17,7 @@ export default class ItemPage extends Component {
     }
 
     render() {
-        const { getItem, addAmount, handleChange, addAmountButton } = this.context;
+        const { getItem, addAmount, handleChange, addAmountButton, handleAddToCart } = this.context;
         const item = getItem(this.state.slug);
         if (!item) {
             return <div className="error">
@@ -59,7 +59,7 @@ export default class ItemPage extends Component {
                                         </div>
                                         <FaPlusCircle className="plus-one plus-minus-button" onClick={() => addAmountButton('plus')} />
                                     </div>
-                                    <div className="btn btn-primary add-button">
+                                    <div className="btn btn-primary add-button" onClick={handleAddToCart}>
                                         add to cart
                                     </div>
                                 </div>
