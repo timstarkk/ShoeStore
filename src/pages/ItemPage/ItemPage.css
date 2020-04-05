@@ -40,7 +40,7 @@
 
 .item-page .line {
     width: 5rem;
-    height: 5px;
+    height: 2px;
     margin: 0 auto;
     margin-top: 1rem;
     background: var(--primaryColor);
@@ -57,7 +57,16 @@
 .add-to-cart {
     /* border: 2px solid darkred; */
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
+}
+
+.plus-minus-section {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .minus-one {
@@ -66,6 +75,7 @@
     height: 2rem;
     color: var(--primaryColor);
 }
+
 .plus-one {
     /* border: 2px solid gold; */
     width: 2rem;
@@ -73,11 +83,16 @@
     color: var(--primaryColor);
     z-index: 3;
 }
+
+.plus-minus-button:hover {
+    cursor: pointer;
+}
+
 .num-display {
-    border: 2px solid green;
+    /* border: 2px solid green; */
     height: 2.5rem;
     width: 3.75rem;
-    margin: 0rem .25rem;
+    margin: 0rem .75rem;
 }
 
 .num-box {
@@ -87,9 +102,23 @@
     text-align: center;
 }
 
+.add-button {
+    border: 1px solid var(--primaryColor);
+    border-radius: 3px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1.5rem;
+    height: 2.5rem;
+    width: 80%;
+}
+
+.add-button:hover {
+    cursor: pointer;
+}
+
 
 @media (max-width: 590px) {
-    
     .item-grid {
         display: flex;
         flex-direction: column;
