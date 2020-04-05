@@ -86,6 +86,7 @@
 
 .plus-minus-button:hover {
     cursor: pointer;
+    color: var(--primaryColorLight)
 }
 
 .num-display {
@@ -117,6 +118,11 @@
     cursor: pointer;
 }
 
+.description-area {
+    margin-top: 2rem;
+    /* border: 2px solid gold; */
+    width: 100%;
+}
 
 @media (max-width: 590px) {
     .item-grid {
