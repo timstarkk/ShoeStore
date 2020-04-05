@@ -42,31 +42,15 @@ class Navbar extends Component {
     componentDidMount() {
         window.addEventListener("scroll", this.listenScrollEvent)
 
-        // const { setCurrentUser } = this.context;
-
-        // this.setState({
-        //     setCurrentUser
-        // })
-    }
-
-    getLocation() {
-        return this.props.location.pathname;
-    }
-
-    accountButtonClick() {
-        // console.log('you clicked the account button')
-        const { currentUser, setCurrentUser } = this.context;
-        console.log(currentUser.username);
+        const { setCurrentUser } = this.context;
 
         Auth.currentSession()
             .then(data => {
                 let sub = data.accessToken.payload.sub;
                 let username = data.accessToken.payload.username;
                 let userInfo = data.accessToken.payload;
-                console.log(data);
-                console.log(sub);
 
-                console.log(currentUser);
+                setCurrentUser(userInfo);
 
                 this.setState({
                     isSignedIn: true,
@@ -77,6 +61,16 @@ class Navbar extends Component {
                 console.log(err);
                 console.log(this.state.isSignedIn)
             });
+    }
+
+    getLocation() {
+        return this.props.location.pathname;
+    }
+
+    accountButtonClick() {
+        // console.log('you clicked the account button')
+        const { currentUser, setCurrentUser } = this.context;
+        console.log(currentUser.username);
 
         this.setState({
             showAccountMenu: true,
