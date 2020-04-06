@@ -13,8 +13,14 @@ export default class ItemPage extends Component {
 
         this.state = {
             slug: this.props.match.params.slug
-        }
-    }
+        };
+    };
+
+    componentDidMount() {
+        const { resetAddAmount } = this.context;
+
+        resetAddAmount();
+    };
 
     render() {
         const { getItem, addAmount, handleChange, addAmountButton, handleAddToCart } = this.context;
@@ -63,7 +69,7 @@ export default class ItemPage extends Component {
                                         </div>
                                         <FaPlusCircle className="plus-one plus-minus-button" onClick={() => addAmountButton('plus')} />
                                     </div>
-                                    <div className="btn btn-primary add-button" onClick={handleAddToCart}>
+                                    <div className="btn btn-primary add-button" onClick={() => handleAddToCart(item)}>
                                         add to cart
                                     </div>
                                 </div>
