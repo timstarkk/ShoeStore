@@ -94,12 +94,18 @@ class ItemProvider extends Component {
         }
     };
 
+    resetAddAmount = () => {
+        this.setState({
+            addAmount: 1
+        })
+    };
+
     getItem = slug => {
         let tempItems = [...this.state.shopItems];
         const item = tempItems.find(item => item.slug === slug);
 
         return item;
-    }
+    };
 
     setCurrentUser = userInfo => {
         console.log('setting user info');
@@ -107,11 +113,29 @@ class ItemProvider extends Component {
         this.setState({
             currentUser: userInfo
         })
-    }
+    };
 
-    handleAddToCart = event => {
-        console.log(this.state.currentUser);
-    }
+    handleAddToCart = item => {
+        if (!this.state.currentUser.username) {
+            this.visitorCartAdd(item);
+        } else {
+            this.userCartAdd(item);
+        }
+    };
+
+    visitorCartAdd = (item) => {
+        console.log(item);
+
+        const shoppingCart = {
+            item: [item, this.state.addAmount]
+        }
+
+        window.localStorage.setItem('user', JSON.stringify(person));
+    };
+
+    userCartAdd = () => {
+        console.log('you are a user');
+    };
 
     render() {
         return (
@@ -121,7 +145,8 @@ class ItemProvider extends Component {
                 setCurrentUser: this.setCurrentUser,
                 handleChange: this.handleChange,
                 addAmountButton: this.addAmountButton,
-                handleAddToCart: this.handleAddToCart
+                handleAddToCart: this.handleAddToCart,
+                resetAddAmount: this.resetAddAmount
             }}>
                 {this.props.children}
             </ItemContext.Provider>
