@@ -148,8 +148,62 @@ class ItemProvider extends Component {
         }
     };
 
-    userCartAdd = () => {
-        console.log('you are a user');
+    userCartAdd = (item) => {
+        let itemId = item.id;
+        let userSub = this.state.currentUser.sub;
+        let newItem = {
+            itemId,
+            amount: this.state.addAmount,
+        }
+
+        console.log(itemId);
+        console.log(userSub);
+
+        // checks for current user cart
+        const checkForCart = `
+        query {
+            listShoppingCarts(filter: {
+                userSub: {
+                    contains: "${userSub}"
+                }
+            }) {
+                items {
+                    id
+                    items {
+                        itemId
+                        amount
+                    }
+                }
+            }
+        }
+        `
+
+        API.graphql(graphqlOperation(checkForCart)).then(res => {
+            let cartExists = res.data.listShoppingCarts.items.length;
+
+            if (cartExists) {
+                // retrieve and prepare items data
+                let cartId = res.data.listShoppingCarts.items[0].id;
+                let cartItems = res.data.listShoppingCarts.items[0].items;
+                cartItems.push(newItem);
+                let stringifiedItems = JSON.stringify(cartItems);
+                let unquotedItems = stringifiedItems.replace(/"([^"]+)":/g, '$1:');
+
+                const updateCart = `
+                    mutation {
+                        updateShoppingCart(input: {
+                        id: "${cartId}"
+                        items: ${unquotedItems}
+                        }) {items {itemId amount}}
+                    }
+                `
+
+                // update cart
+                API.graphql(graphqlOperation(updateCart)).then(() => console.log('update successful')).catch(err => console.log(`you broke it`, err));
+            }
+
+            // if doesn't exist, create that cart
+        }).catch(err => console.log(err))
     };
 
     render() {
