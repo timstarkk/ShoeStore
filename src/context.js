@@ -198,11 +198,33 @@ class ItemProvider extends Component {
                     }
                 `
 
-                // update cart
-                API.graphql(graphqlOperation(updateCart)).then(() => console.log('update successful')).catch(err => console.log(`you broke it`, err));
+                // update cart with new item added
+                API.graphql(graphqlOperation(updateCart)).then(() => console.log('update successful')).catch(err => console.log(`you broke it `, err));
+            } else {
+                // if doesn't exist, create that cart
+                const createCart = `
+                    mutation {
+                        createShoppingCart(input: {
+                        userSub: "${userSub}"
+                        items: [{
+                            itemId: "${itemId}"
+                            amount: ${this.state.addAmount}
+                        }]
+                        }) { 
+                            id 
+                            userSub 
+                            items {
+                                itemId
+                                amount
+                            }
+                        }
+                    }
+                `
+
+                // create cart with selected item and amount
+                API.graphql(graphqlOperation(createCart)).then(() => console.log('cart created successfully')).catch(err => console.log(`whoops `, err));
             }
 
-            // if doesn't exist, create that cart
         }).catch(err => console.log(err))
     };
 
