@@ -25,6 +25,54 @@ query {
 
 export default query;
 
+
+// mutation create {
+// 	createShoppingCart(input: {
+//     userSub: "db00f9b8-b41a-45a0-b352-86316e64b175"
+//     items: [{
+//       itemId: "db00f9b8-b41a-45a0-b352-86316e64b175"
+//       amount: 3
+//     }]
+//   }) { 
+//     id 
+//     userSub 
+//     items {
+//       itemId
+//       amount
+//     }
+// }
+// }
+
+// below updates amount of certain item
+
+// mutation update {
+//     updateShoppingCart(input: {
+//       id: "0d5e7406-c413-456f-9781-d6a015166344"
+//       items: [{
+//         itemId: "db00f9b8-b41a-45a0-b352-86316e64b175"
+//         amount: 5
+//       }]
+//     }) {items {amount}}
+//   }
+
+
+// below lists shopping carts that include a specified userid if they exist
+
+// query list { 
+// 	listShoppingCarts(filter:{
+//     userSub: {
+//       contains: "db00f9b8-b41a-45a0-b352-86316e64b175"
+//     }
+//   }) {
+//     items {
+//       items {
+//         itemId
+//         amount
+//       }
+//     }
+//   }
+// }
+
 // const items = [
 //     {
 //         sys: {
