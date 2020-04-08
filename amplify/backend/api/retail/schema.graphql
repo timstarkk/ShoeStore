@@ -5,8 +5,8 @@ type ShoppingCart @model {
 }
 
 type Item {
-  name: String!
-  description: String
+  itemId: String!
+  amount: Int!
 }
 
 
