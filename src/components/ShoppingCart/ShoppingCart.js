@@ -1,23 +1,31 @@
 import React, { Component } from 'react'
 import { ItemContext } from '../../context';
+import './ShoppingCart.css';
 
 export default class ShoppingCart extends Component {
     static contextType = ItemContext;
     constructor(props) {
         super();
-
-        this.state = {
-            cartVisible: false
-        }
     }
 
-
-
     render() {
+        let { toggleCart, cartVisible } = this.context;
+        let visibility = "hide";
+
+        console.log(cartVisible);
+        if (cartVisible) {
+            console.log('show');
+            visibility = "show";
+        };
+
         return (
-            <div>
-                hello from shopping cart
-            </div>
+            <>
+                <div id="menu-background" className={visibility} />
+                <div id="flyout-menu" className={visibility}>
+                    <button onClick={() => toggleCart()}>close</button>
+                    <p>hello from Shopping Cart</p>
+                </div>
+            </>
         )
     }
 }
