@@ -3,6 +3,7 @@ import './Navbar.css';
 // import logo from '../../images/logo.png';
 import { GoThreeBars as Hamburger } from "react-icons/go";
 import { MdAccountCircle as AccountIcon } from "react-icons/md";
+import { FaShoppingCart as CartIcon } from "react-icons/fa";
 import { Link, withRouter } from 'react-router-dom';
 import { Auth } from 'aws-amplify';
 import { ItemContext } from '../../context';
@@ -130,6 +131,9 @@ class Navbar extends Component {
                             </li>
                             <li>
                                 <Link onClick={() => this.accountButtonClick()}><AccountIcon id="account-link" /></Link>
+                            </li>
+                            <li>
+                                <Link to="#"><CartIcon /></Link>
                             </li>
                         </ul>
                     </div >
