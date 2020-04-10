@@ -3,6 +3,16 @@ import { ItemContext } from '../../context';
 
 export default class ShoppingCart extends Component {
     static contextType = ItemContext;
+    constructor(props) {
+        super();
+
+        this.state = {
+            visible: false
+        }
+    }
+
+
+
     render() {
         return (
             <div>
