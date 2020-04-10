@@ -19,8 +19,7 @@ class ItemProvider extends Component {
         minPrice: 0,
         maxPrice: 0,
         currentUser: {},
-        addAmount: 1,
-        cartVisible: false
+        addAmount: 1
     };
 
     async componentDidMount() {
@@ -229,12 +228,6 @@ class ItemProvider extends Component {
         }).catch(err => console.log(err))
     };
 
-    toggleCart = () => {
-        this.setState({
-            cartVisible: !this.state.cartVisible
-        });
-    }
-
     render() {
         return (
             <ItemContext.Provider value={{
@@ -244,8 +237,7 @@ class ItemProvider extends Component {
                 handleChange: this.handleChange,
                 addAmountButton: this.addAmountButton,
                 handleAddToCart: this.handleAddToCart,
-                resetAddAmount: this.resetAddAmount,
-                toggleCart: this.toggleCart
+                resetAddAmount: this.resetAddAmount
             }}>
                 {this.props.children}
             </ItemContext.Provider>
