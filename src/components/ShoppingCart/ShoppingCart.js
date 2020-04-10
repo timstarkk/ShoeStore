@@ -7,7 +7,7 @@ export default class ShoppingCart extends Component {
         super();
 
         this.state = {
-            visible: false
+            cartVisible: false
         }
     }
 
