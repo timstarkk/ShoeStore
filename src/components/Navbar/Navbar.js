@@ -21,6 +21,8 @@ class Navbar extends Component {
             isSignedIn: false,
             currentUser: '',
             setCurrentUser: '',
+            cartVisible: false,
+            toggleCart: ''
         }
 
         this.accountButtonClick = this.accountButtonClick.bind(this);
@@ -43,7 +45,7 @@ class Navbar extends Component {
     componentDidMount() {
         window.addEventListener("scroll", this.listenScrollEvent)
 
-        const { setCurrentUser } = this.context;
+        const { setCurrentUser, cartVisible, toggleCart } = this.context;
 
         Auth.currentSession()
             .then(data => {
@@ -55,7 +57,9 @@ class Navbar extends Component {
 
                 this.setState({
                     isSignedIn: true,
-                    currentUser: username
+                    currentUser: username,
+                    cartVisible,
+                    toggleCart
                 })
             })
             .catch(err => {
@@ -133,7 +137,7 @@ class Navbar extends Component {
                                 <Link onClick={() => this.accountButtonClick()}><AccountIcon id="account-link" /></Link>
                             </li>
                             <li>
-                                <Link to="#"><CartIcon id="cart-icon" /></Link>
+                                <Link to="" onClick={() => this.state.toggleCart()}><CartIcon id="cart-icon" /></Link>
                             </li>
                         </ul>
                     </div >
