@@ -20,7 +20,7 @@ export default class ShoppingCart extends Component {
 
         return (
             <>
-                <div id="menu-background" className={visibility} />
+                <div id="menu-background" className={visibility} onClick={() => toggleCart()} />
                 <div id="flyout-menu" className={visibility}>
                     <button onClick={() => toggleCart()}>close</button>
                     <p>hello from Shopping Cart</p>
