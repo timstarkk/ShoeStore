@@ -137,7 +137,7 @@ class Navbar extends Component {
                                 <Link onClick={() => this.accountButtonClick()}><AccountIcon id="account-link" /></Link>
                             </li>
                             <li>
-                                <Link onClick={() => this.state.toggleCart()}><CartIcon id="cart-icon" /></Link>
+                                <a onClick={() => this.state.toggleCart()}><CartIcon id="cart-icon" /></a>
                             </li>
                         </ul>
                     </div >
