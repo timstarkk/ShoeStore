@@ -81,7 +81,6 @@
     width: 2rem;
     height: 2rem;
     color: var(--primaryColor);
-    z-index: 3;
 }
 
 .plus-minus-button:hover {
