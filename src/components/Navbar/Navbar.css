@@ -50,6 +50,7 @@
     letter-spacing: var(--mainSpacing);
   }
   .nav-links a:hover {
+    cursor: pointer;
     color: var(--mainWhite, 30%);
   }
   .nav-links.nav-white a {
