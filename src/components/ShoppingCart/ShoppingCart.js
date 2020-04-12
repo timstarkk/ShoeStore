@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { ItemContext } from '../../context';
 import { MdClose as CloseButton } from "react-icons/md";
+import { IoIosArrowRoundForward as Arrow } from "react-icons/io";
 import './ShoppingCart.css';
 
 export default class ShoppingCart extends Component {
@@ -42,7 +43,7 @@ export default class ShoppingCart extends Component {
                     <div className="disclaimer">
                         <p>Taxes and shipping calculated at checkout</p>
                     </div>
-                    <div className="btn btn-primary checkout-button">checkout</div>
+                    <div className="btn btn-primary checkout-button">checkout <Arrow className="checkout-arrow" /></div>
                 </div>
             </>
         )
