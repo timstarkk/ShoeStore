@@ -5,11 +5,15 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { ItemProvider } from './context';
+import ShoppingCart from './components/ShoppingCart/ShoppingCart';
 
 ReactDOM.render(
     <ItemProvider>
         <Router>
-            <App />
+            <ShoppingCart />
+            <div id="app-container">
+                <App />
+            </div>
         </Router>
     </ItemProvider>, document.getElementById('root')
 );
