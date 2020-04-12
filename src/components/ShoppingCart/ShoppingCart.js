@@ -39,6 +39,9 @@ export default class ShoppingCart extends Component {
                         <h5>subtotal</h5>
                         <h5>$0.00</h5>
                     </div>
+                    <div className="disclaimer">
+                        <p>Taxes and shipping calculated at checkout</p>
+                    </div>
                 </div>
             </>
         )
