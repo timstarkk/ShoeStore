@@ -31,11 +31,11 @@ export default class ShoppingCart extends Component {
                     <CloseButton id="close-button" onClick={() => toggleCart()} />
                     <h4>Your Cart</h4>
                     <div className="line" />
-                    <div className="cart-items-area">
+                    <div id="cart-items-area">
                         <p>this is where the cart items will go</p>
                     </div>
                     <div className="line" />
-                    <div className="subtotal-area">
+                    <div id="subtotal-area">
                         <p>subtotal:</p>
                     </div>
                 </div>
