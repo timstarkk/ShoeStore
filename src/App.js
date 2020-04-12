@@ -11,14 +11,12 @@ import ItemPage from './pages/ItemPage/ItemPage';
 import SignUp from './pages/SignUp';
 import SignIn from './pages/SignIn';
 import Navbar from './components/Navbar/Navbar';
-import ShoppingCart from './components/ShoppingCart/ShoppingCart';
 
 Amplify.configure(config);
 function App() {
   return (
     <>
       <Navbar />
-      <ShoppingCart />
       <ScrollToTop>
         <Switch>
           <Route exact path="/" component={Home} />
