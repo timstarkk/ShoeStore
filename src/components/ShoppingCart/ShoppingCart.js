@@ -42,6 +42,7 @@ export default class ShoppingCart extends Component {
                     <div className="disclaimer">
                         <p>Taxes and shipping calculated at checkout</p>
                     </div>
+                    <div className="btn btn-primary checkout-button">checkout</div>
                 </div>
             </>
         )
