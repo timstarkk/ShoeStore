@@ -88,3 +88,14 @@
   display: flex;
   justify-content: center;
 }
+
+.checkout-button {
+  border: 1px solid var(--primaryColor);
+  border-radius: 3px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1.5rem;
+  height: 2.5rem;
+  width: 21rem;
+}
