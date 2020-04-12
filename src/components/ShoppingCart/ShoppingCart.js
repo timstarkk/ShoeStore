@@ -36,7 +36,8 @@ export default class ShoppingCart extends Component {
                     </div>
                     <div className="line" />
                     <div id="subtotal-area">
-                        <h5>subtotal:</h5>
+                        <h5>subtotal</h5>
+                        <h5>$0.00</h5>
                     </div>
                 </div>
             </>
