@@ -1,39 +1,42 @@
 #flyout-menu {
-  width: 300px;
+  width: 400px;
   height: 100vh;
   color: var(--mainWhite);
   background-color: var(--mainBlack);
   position: fixed;
   top: 0;
-  right: -300px;
-  transition: transform .3s cubic-bezier(0, .52, 0, 1);
-  overflow: scroll;
+  right: -400px;
+  transition: all 0.35s cubic-bezier(0.46, 0.01 , 0.32, 1);
   z-index: 1000;
+  padding: 2rem;
 }
  
 #flyout-menu.show {
-  transform: translate3d(-300px, 0, 0);
+  transform: translateX(-400px);
 }
  
 #flyout-menu.hide {
-  transform: translate3d(0vw, 0, 0);
+  transform: translateX(0vw, 0, 0);
   overflow: hidden;
 }
 
 #flyout-menu button {
-    position: absolute;
-    top: 10px;
-    right: 10px;
+  position: absolute;
+  height: 2rem;
+  width: 2rem;
+  top: 2rem;
+  right: 2rem;
 }
 
 #menu-background {
-    background-color: rgba(0,0,0, 0.3);
-    z-index: 900;
-    height: 100vh;
-    width: 100vw;
-    position: fixed;
-    top: 0;
-    left: 0;
+  background-color: transparent;
+  /* background-color: rgba(0,0,0, 0.3); */
+  z-index: 900;
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  left: 0;
 }
 
 #menu-background.show {
