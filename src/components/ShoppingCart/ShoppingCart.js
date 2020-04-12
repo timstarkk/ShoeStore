@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { ItemContext } from '../../context';
+import { MdClose as CloseButton } from "react-icons/md";
 import './ShoppingCart.css';
 
 export default class ShoppingCart extends Component {
@@ -27,7 +28,7 @@ export default class ShoppingCart extends Component {
             <>
                 <div id="menu-background" className={visibility} onClick={() => toggleCart()} />
                 <div id="flyout-menu" className={visibility}>
-                    <button onClick={() => toggleCart()}>close</button>
+                    <CloseButton id="close-button" onClick={() => toggleCart()} />
                     <p>hello from Shopping Cart</p>
                 </div>
             </>
