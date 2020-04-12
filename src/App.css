@@ -25,16 +25,32 @@
 
 html {
   overflow-x: hidden;
+  background-color: var(--mainBlack);
 }
 
 body {
   color: var(--mainBlack);
-  background: var(--mainGrey);
+  background: var(--mainBlack);
   font-family: 'nunito';
   line-height: 1.4;
   overflow-x: hidden;
   overflow-y: hidden;
 }
+
+#app-container {
+  background-color: var(--mainGrey);
+  transition: all 0.35s cubic-bezier(0.46, 0.01 , 0.32, 1);
+}
+
+#app-container.show {
+  transform: translateX(-400px);
+  overflow: visible;
+}
+
+#app-container.hide {
+  transform: translateX(0vw, 0, 0);
+}
+
 h1 {
   font-weight: 700;
   font-size: 3em;
