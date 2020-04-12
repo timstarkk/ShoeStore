@@ -29,7 +29,15 @@ export default class ShoppingCart extends Component {
                 <div id="menu-background" className={visibility} onClick={() => toggleCart()} />
                 <div id="flyout-menu" className={visibility}>
                     <CloseButton id="close-button" onClick={() => toggleCart()} />
-                    <p>hello from Shopping Cart</p>
+                    <h4>Your Cart</h4>
+                    <div className="line" />
+                    <div className="cart-items-area">
+                        <p>this is where the cart items will go</p>
+                    </div>
+                    <div className="line" />
+                    <div className="subtotal-area">
+                        <p>subtotal:</p>
+                    </div>
                 </div>
             </>
         )
