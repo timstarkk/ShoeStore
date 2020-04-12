@@ -15,7 +15,12 @@ export default class ShoppingCart extends Component {
         console.log(cartVisible);
         if (cartVisible) {
             console.log('show');
-            visibility = "show";
+            visibility = 'show';
+            document.getElementById('app-container').classList.add('show');
+        } else {
+            if (document.getElementById('app-container') !== null) {
+                document.getElementById('app-container').classList.remove('show');
+            }
         };
 
         return (
