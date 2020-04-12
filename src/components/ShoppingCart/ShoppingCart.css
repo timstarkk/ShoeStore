@@ -20,7 +20,8 @@
   overflow: hidden;
 }
 
-#flyout-menu button {
+#close-button {
+  color: var(--mainWhite);
   position: absolute;
   height: 2rem;
   width: 2rem;
