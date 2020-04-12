@@ -51,3 +51,18 @@
 #menu-background.hide {
     visibility: hidden;
 }
+
+#flyout-menu h4 {
+  font-size: 1.5rem;
+  letter-spacing: var(--mainSpacing);
+  text-transform: capitalize;
+  margin-bottom: 1rem;
+}
+
+#flyout-menu .line {
+  width: 21rem;
+  height: 1px;
+  margin: 0 auto;
+  background: var(--primaryColor);
+  margin-bottom: 4rem;
+}
