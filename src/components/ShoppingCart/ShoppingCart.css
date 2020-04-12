@@ -77,3 +77,14 @@
   padding-top: 1rem;
   height: 66vh;
 }
+
+#subtotal-area {
+  display: flex;
+  justify-content: space-between;
+}
+
+.disclaimer {
+  color: var(--lightDarkGrey);
+  display: flex;
+  justify-content: center;
+}
