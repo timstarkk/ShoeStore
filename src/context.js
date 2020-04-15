@@ -20,7 +20,8 @@ class ItemProvider extends Component {
         maxPrice: 0,
         currentUser: {},
         addAmount: 1,
-        cartVisible: false
+        cartVisible: false,
+        cartItemsData: [],
     };
 
     async componentDidMount() {
@@ -233,7 +234,81 @@ class ItemProvider extends Component {
         this.setState({
             cartVisible: !this.state.cartVisible
         });
-    }
+    };
+
+    getCartItems = () => {
+        Auth.currentSession()
+            .then(data => {
+                let userSub = data.accessToken.payload.sub;
+                const getCart = `
+                    query {
+                        listShoppingCarts(filter: {
+                            userSub: {
+                                contains: "${userSub}"
+                            }
+                        }) {
+                            items {
+                                id
+                                items {
+                                    itemId
+                                    amount
+                                }
+                            }
+                        }
+                    }
+                `
+
+                API.graphql(graphqlOperation(getCart)).then(res => {
+                    let cartItems = res.data.listShoppingCarts.items[0].items
+
+                    this.getCartItemsData(cartItems);
+                });
+            })
+            .catch(err => {
+                console.log(err);
+            });
+
+    };
+
+    getCartItemsData = (cartItems) => {
+        console.log('getting cart items data');
+
+        for (const item of cartItems) {
+            let itemId = item.itemId;
+            let amount = item.amount;
+
+            console.log(itemId);
+            console.log(amount);
+
+            const getItemData = `
+                query {
+                    getStoreItem(
+                    id: "${itemId}"
+                    ){
+                    fields {
+                        images {
+                        imageFields {
+                            file {
+                            url
+                            }
+                        }
+                        }
+                        name
+                        price
+                    }
+                    }
+                }
+            `
+            API.graphql(graphqlOperation(getItemData)).then(res => {
+                const cartItemsArray = this.state.cartItemsData;
+
+                cartItemsArray.push(res.data.getStoreItem.fields);
+                this.setState({
+                    cartItemsData: cartItemsArray
+                })
+            }).catch(err => console.log(err.message));
+        }
+    };
 
     render() {
         return (
@@ -245,7 +320,9 @@ class ItemProvider extends Component {
                 addAmountButton: this.addAmountButton,
                 handleAddToCart: this.handleAddToCart,
                 resetAddAmount: this.resetAddAmount,
-                toggleCart: this.toggleCart
+                toggleCart: this.toggleCart,
+                getCartItems: this.getCartItems,
+                getCartItemsData: this.getCartItemsData
             }}>
                 {this.props.children}
             </ItemContext.Provider>
