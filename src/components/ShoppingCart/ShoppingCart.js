@@ -10,8 +10,14 @@ export default class ShoppingCart extends Component {
         super();
     }
 
+    componentDidMount() {
+        const { getCartItems } = this.context;
+
+        getCartItems();
+    }
+
     render() {
-        let { toggleCart, cartVisible } = this.context;
+        let { toggleCart, cartVisible, cartItemsData } = this.context;
         let visibility = "hide";
 
         console.log(cartVisible);
