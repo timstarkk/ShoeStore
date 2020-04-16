@@ -20,8 +20,7 @@ class Navbar extends Component {
             showAccountMenu: false,
             isSignedIn: false,
             currentUser: '',
-            setCurrentUser: '',
-            cartVisible: false
+            setCurrentUser: ''
         }
 
         this.accountButtonClick = this.accountButtonClick.bind(this);
@@ -44,7 +43,7 @@ class Navbar extends Component {
     componentDidMount() {
         window.addEventListener("scroll", this.listenScrollEvent)
 
-        const { setCurrentUser, cartVisible } = this.context;
+        const { setCurrentUser } = this.context;
 
         Auth.currentSession()
             .then(data => {
@@ -56,8 +55,7 @@ class Navbar extends Component {
 
                 this.setState({
                     isSignedIn: true,
-                    currentUser: username,
-                    cartVisible
+                    currentUser: username
                 })
             })
             .catch(err => {
@@ -73,14 +71,25 @@ class Navbar extends Component {
     accountButtonClick() {
         // console.log('you clicked the account button')
         const { currentUser, setCurrentUser } = this.context;
-        console.log(currentUser.username);
+        console.log(currentUser);
 
-        this.setState({
-            showAccountMenu: true,
-            setCurrentUser
-        }, () => {
-            document.addEventListener('click', this.closeMenu);
-        });
+        if (Object.keys(currentUser).length !== 0) {
+            this.setState({
+                isSignedIn: true,
+                currentUser: currentUser.username,
+                showAccountMenu: true,
+                setCurrentUser
+            }, () => {
+                document.addEventListener('click', this.closeMenu);
+            });
+        } else {
+            this.setState({
+                showAccountMenu: true,
+                setCurrentUser
+            }, () => {
+                document.addEventListener('click', this.closeMenu);
+            });
+        }
     }
 
     closeMenu() {
