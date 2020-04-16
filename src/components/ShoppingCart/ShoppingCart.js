@@ -3,26 +3,19 @@ import { ItemContext } from '../../context';
 import { MdClose as CloseButton } from "react-icons/md";
 import { IoIosArrowRoundForward as Arrow } from "react-icons/io";
 import './ShoppingCart.css';
+import CartList from '../CartList/CartList';
 
 export default class ShoppingCart extends Component {
     static contextType = ItemContext;
-    constructor(props) {
+    constructor() {
         super();
-    }
-
-    componentDidMount() {
-        const { getCartItems } = this.context;
-
-        getCartItems();
     }
 
     render() {
         let { toggleCart, cartVisible, cartItemsData } = this.context;
         let visibility = "hide";
 
-        console.log(cartVisible);
         if (cartVisible) {
-            console.log('show');
             visibility = 'show';
             document.getElementById('app-container').classList.add('show');
         } else {
@@ -30,7 +23,6 @@ export default class ShoppingCart extends Component {
                 document.getElementById('app-container').classList.remove('show');
             }
         };
-
         return (
             <>
                 <div id="menu-background" className={visibility} onClick={() => toggleCart()} />
@@ -39,7 +31,7 @@ export default class ShoppingCart extends Component {
                     <h4>Your Cart</h4>
                     <div className="line" />
                     <div id="cart-items-area">
-                        <p>this is where the cart items will go</p>
+                        <CartList cartItems={cartItemsData} />
                     </div>
                     <div className="line" />
                     <div id="subtotal-area">
