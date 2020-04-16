@@ -231,6 +231,7 @@ class ItemProvider extends Component {
     };
 
     toggleCart = () => {
+        this.getCartItems();
         this.setState({
             cartVisible: !this.state.cartVisible
         });
@@ -272,13 +273,11 @@ class ItemProvider extends Component {
 
     getCartItemsData = (cartItems) => {
         console.log('getting cart items data');
+        const cartItemsArray = [];
 
         for (const item of cartItems) {
             let itemId = item.itemId;
             let amount = item.amount;
-
-            console.log(itemId);
-            console.log(amount);
 
             const getItemData = `
                 query {
@@ -299,10 +298,10 @@ class ItemProvider extends Component {
                     }
                 }
             `
-            API.graphql(graphqlOperation(getItemData)).then(res => {
-                const cartItemsArray = this.state.cartItemsData;
 
+            API.graphql(graphqlOperation(getItemData)).then(res => {
                 cartItemsArray.push(res.data.getStoreItem.fields);
+                // one setState would be preferred
                 this.setState({
                     cartItemsData: cartItemsArray
                 })
