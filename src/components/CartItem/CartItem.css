@@ -1,0 +1,27 @@
+.cart-item {
+    display: flex;
+    width: 100%;
+}
+
+.cart-info {
+    display: flex;
+    flex-direction: column;
+    /* border: 2px solid gold; */
+    height: 5rem;
+    width: 100%;
+    margin-bottom: .5rem;
+}
+
+.item-name {
+    align-self: center;
+    justify-self: flex-start;
+}
+
+.item-price {
+    align-self: flex-end;
+}
+
+.item-img {
+    height: 5rem;
+    width: 5rem;
+}
