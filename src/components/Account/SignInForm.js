@@ -65,25 +65,29 @@ export default class SignInForm extends Component {
 
         if (signedIn) {
             return (
-                <div className="account-section">
-                    <div className="container-wrapper">
-                        <div className="line" />
-                        <h1>You have signed in!</h1>
+                <div className="account-wrapper">
+                    <div className="account-section">
+                        <div className="container-wrapper">
+                            <div className="line" />
+                            <h1>You have signed in!</h1>
+                        </div>
                     </div>
                 </div>
             )
         } else {
             return (
-                <div className="account-section">
-                    <div className="container-wrapper">
-                        <h4>Sign In To Your Account</h4>
-                        <div className="line" />
-                        <form onSubmit={this.handleSubmit}>
-                            <input type="text" name="username" placeholder="username" onChange={this.handleChange} />
-                            <input type="password" name="password" placeholder="password" onChange={this.handleChange} />
-                            <button>Sign In</button>
-                        </form>
-                        <a href="/account/signup">create an account</a>
+                <div className="account-wrapper">
+                    <div className="account-section">
+                        <div className="container-wrapper">
+                            <h4>Sign In To Your Account</h4>
+                            <div className="line" />
+                            <form onSubmit={this.handleSubmit}>
+                                <input type="text" name="username" placeholder="username" onChange={this.handleChange} />
+                                <input type="password" name="password" placeholder="password" onChange={this.handleChange} />
+                                <button>Sign In</button>
+                            </form>
+                            <a href="/account/signup">create an account</a>
+                        </div>
                     </div>
                 </div>
             )
