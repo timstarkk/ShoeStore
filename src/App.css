@@ -37,6 +37,14 @@ body {
   overflow-y: hidden;
 }
 
+body.show {
+  -ms-overflow-style: none;
+}
+
+body.show::-webkit-scrollbar {
+  display: none;
+}
+
 #app-container {
   background-color: var(--mainGrey);
   transition: all 0.35s cubic-bezier(0.46, 0.01 , 0.32, 1);
