@@ -11,6 +11,8 @@
   padding: 25px 30px;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+  /* border: 2px solid darkgreen; */
 }
  
 #flyout-menu.show {
@@ -94,6 +96,7 @@
 #subtotal-area {
   display: flex;
   justify-content: space-between;
+  padding-top: 15px
 }
 
 .disclaimer {
@@ -108,7 +111,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 1.5rem;
+  margin-top: 1rem;
   height: 2.5rem;
   width: 21rem;
 }
