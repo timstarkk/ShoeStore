@@ -117,6 +117,12 @@ class ItemProvider extends Component {
         })
     };
 
+    afterSignOut = () => {
+        this.setState({
+            cartItemsData: []
+        })
+    };
+
     handleAddToCart = item => {
         if (!this.state.currentUser.username) {
             this.visitorCartAdd(item);
@@ -321,7 +327,8 @@ class ItemProvider extends Component {
                 resetAddAmount: this.resetAddAmount,
                 toggleCart: this.toggleCart,
                 getCartItems: this.getCartItems,
-                getCartItemsData: this.getCartItemsData
+                getCartItemsData: this.getCartItemsData,
+                afterSignOut: this.afterSignOut
             }}>
                 {this.props.children}
             </ItemContext.Provider>
