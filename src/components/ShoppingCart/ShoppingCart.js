@@ -18,9 +18,11 @@ export default class ShoppingCart extends Component {
         if (cartVisible) {
             visibility = 'show';
             document.getElementById('app-container').classList.add('show');
+            document.body.classList.add('show');
         } else {
             if (document.getElementById('app-container') !== null) {
                 document.getElementById('app-container').classList.remove('show');
+                document.body.classList.remove('show');
             }
         };
         return (
