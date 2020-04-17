@@ -70,7 +70,7 @@ class Navbar extends Component {
 
     accountButtonClick() {
         // console.log('you clicked the account button')
-        const { currentUser, setCurrentUser } = this.context;
+        const { currentUser, setCurrentUser, afterSignOut } = this.context;
         console.log(currentUser);
 
         if (Object.keys(currentUser).length !== 0) {
@@ -78,14 +78,16 @@ class Navbar extends Component {
                 isSignedIn: true,
                 currentUser: currentUser.username,
                 showAccountMenu: true,
-                setCurrentUser
+                setCurrentUser,
+                afterSignOut
             }, () => {
                 document.addEventListener('click', this.closeMenu);
             });
         } else {
             this.setState({
                 showAccountMenu: true,
-                setCurrentUser
+                setCurrentUser,
+                afterSignOut
             }, () => {
                 document.addEventListener('click', this.closeMenu);
             });
@@ -100,6 +102,7 @@ class Navbar extends Component {
 
     handleSignOut() {
         console.log('you clicked sign out')
+        this.state.afterSignOut();
         Auth.signOut()
             .then(data => console.log(data))
             .catch(err => console.log(err));
