@@ -25,10 +25,10 @@
 #close-button {
   color: var(--mainWhite);
   position: absolute;
-  height: 2rem;
-  width: 2rem;
-  top: 2rem;
-  right: 2rem;
+  height: 1.75rem;
+  width: 1.75rem;
+  top: 25px;
+  right: 30px;
 }
 
 #close-button:hover {
@@ -55,7 +55,7 @@
 }
 
 #flyout-menu h4 {
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   letter-spacing: var(--mainSpacing);
   text-transform: capitalize;
   margin-bottom: 30px;
