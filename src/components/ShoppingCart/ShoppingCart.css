@@ -58,6 +58,7 @@
   font-size: 1.5rem;
   letter-spacing: var(--mainSpacing);
   text-transform: capitalize;
+  margin-bottom: 30px;
 }
 
 #flyout-menu h5 {
