@@ -19,10 +19,12 @@ export default class ShoppingCart extends Component {
             visibility = 'show';
             document.getElementById('app-container').classList.add('show');
             document.body.classList.add('show');
+            document.getElementsByTagName( 'html' )[0].classList.add('show');
         } else {
             if (document.getElementById('app-container') !== null) {
                 document.getElementById('app-container').classList.remove('show');
                 document.body.classList.remove('show');
+                document.getElementsByTagName( 'html' )[0].classList.remove('show');
             }
         };
         return (
