@@ -39,6 +39,7 @@ body {
 
 body.show {
   -ms-overflow-style: none;
+  position: fixed;
 }
 
 body.show::-webkit-scrollbar {
