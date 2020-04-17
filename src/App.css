@@ -28,6 +28,10 @@ html {
   background-color: var(--mainBlack);
 }
 
+html.show {
+  overflow: hidden;
+}
+
 body {
   color: var(--mainBlack);
   background: var(--mainBlack);
@@ -39,7 +43,6 @@ body {
 
 body.show {
   -ms-overflow-style: none;
-  position: fixed;
 }
 
 body.show::-webkit-scrollbar {
