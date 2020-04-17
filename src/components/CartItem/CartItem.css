@@ -11,7 +11,7 @@
 .cart-info {
     display: flex;
     flex-direction: column;
-    height: 5rem;
+    height: 4.5rem;
     width: 100%;
     margin-bottom: .5rem;
 }
@@ -26,10 +26,10 @@
 }
 
 .item-img {
-    height: 5rem;
-    width: 5rem;
-    min-height: 5rem;
-    min-width: 5rem;
+    height: 4.5rem;
+    width: 4.5rem;
+    min-height: 4.5rem;
+    min-width: 4.5rem;
 }
 
 .cart-item .line {
