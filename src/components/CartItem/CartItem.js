@@ -7,11 +7,14 @@ export default function CartItem({ item }) {
 
     return (
         <div className="cart-item">
-            <img src={img} className="item-img"/>
-            <div className="cart-info">
-                <h4 className="item-name">{name}</h4>
-                <p className="item-price">${price}</p>
+            <div className="cart-details">
+                <img src={img} className="item-img" />
+                <div className="cart-info">
+                    <h4 className="item-name">{name}</h4>
+                    <p className="item-price">${price}</p>
+                </div>
             </div>
+            <div className="line" />
         </div>
     )
 }
