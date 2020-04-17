@@ -6,8 +6,8 @@
 
 .cart-details {
     display: flex;
-    padding-top: 2rem;
-    padding-bottom: 2rem;
+    padding-top: 30px;
+    padding-bottom: 30px;
 }
 
 .cart-info {
