@@ -1,12 +1,16 @@
 .cart-item {
     display: flex;
     width: 100%;
+    flex-direction: column;
+}
+
+.cart-details {
+    display: flex;
 }
 
 .cart-info {
     display: flex;
     flex-direction: column;
-    /* border: 2px solid gold; */
     height: 5rem;
     width: 100%;
     margin-bottom: .5rem;
@@ -27,3 +31,13 @@
     min-height: 5rem;
     min-width: 5rem;
 }
+
+.cart-item .line {
+    width: 21rem;
+    height: 1px;
+    margin: 0 auto;
+    background: var(--primaryColor);
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+  }
+  
