@@ -78,15 +78,11 @@
   height: 1px;
   margin: 0 auto;
   background: var(--primaryColor);
-  margin-top: 2rem;
-  margin-bottom: 2rem;
 }
 #cart-items-area {
   height: auto;
   overflow: scroll;
   -ms-overflow-style: none;
-  padding-top: 2rem;
-  padding-bottom: 2rem;
 }
 
 #cart-items-area::-webkit-scrollbar {
