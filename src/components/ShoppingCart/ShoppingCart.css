@@ -9,6 +9,8 @@
   transition: all 0.35s cubic-bezier(0.46, 0.01 , 0.32, 1);
   z-index: 1000;
   padding: 2rem;
+  display: flex;
+  flex-direction: column;
 }
  
 #flyout-menu.show {
@@ -80,7 +82,7 @@
   margin-bottom: 2rem;
 }
 #cart-items-area {
-  height: 27rem;
+  height: auto;
   overflow: scroll;
   -ms-overflow-style: none;
   padding-top: 2rem;
