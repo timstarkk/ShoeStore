@@ -33,15 +33,17 @@ export default class ShoppingCart extends Component {
                     <div id="cart-items-area">
                         <CartList cartItems={cartItemsData} />
                     </div>
-                    <div className="outer-line" />
-                    <div id="subtotal-area">
-                        <h5>subtotal</h5>
-                        <h5>$0.00</h5>
+                    <div className="bottom-area">
+                        <div className="outer-line" />
+                        <div id="subtotal-area">
+                            <h5>subtotal</h5>
+                            <h5>$0.00</h5>
+                        </div>
+                        <div className="disclaimer">
+                            <p>Taxes and shipping calculated at checkout</p>
+                        </div>
+                        <div className="btn btn-primary checkout-button">checkout <Arrow className="checkout-arrow" /></div>
                     </div>
-                    <div className="disclaimer">
-                        <p>Taxes and shipping calculated at checkout</p>
-                    </div>
-                    <div className="btn btn-primary checkout-button">checkout <Arrow className="checkout-arrow" /></div>
                 </div>
             </>
         )
