@@ -64,20 +64,33 @@
   text-transform: uppercase;
 }
 
+#flyout-menu .outer-line {
+  width: 21rem;
+  height: 1px;
+  margin: 0 auto;
+  background: var(--primaryColor);
+}
+
 #flyout-menu .line {
   width: 21rem;
   height: 1px;
   margin: 0 auto;
   background: var(--primaryColor);
   margin-top: 2rem;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
 }
-
 #cart-items-area {
-  padding-top: 1rem;
   height: 53vh;
   overflow: scroll;
+  -ms-overflow-style: none;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
 }
+
+#cart-items-area::-webkit-scrollbar {
+  display: none;
+}
+
 
 #subtotal-area {
   display: flex;
