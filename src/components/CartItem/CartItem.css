@@ -33,3 +33,7 @@
     min-height: 4.5rem;
     min-width: 4.5rem;
 }
+
+.plus-minus-area {
+    display: flex;
+}
