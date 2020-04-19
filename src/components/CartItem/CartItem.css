@@ -56,6 +56,11 @@
     align-items: center;
 }
 
+.plus-minus:hover {
+    cursor: pointer;
+    background-color: var(--primaryColor);
+}
+
 .amount-area {
     height: 1.25rem;
     width: 2rem; 
