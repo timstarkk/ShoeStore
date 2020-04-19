@@ -57,7 +57,14 @@
 }
 
 #flyout-menu h4 {
-  font-size: 1.25rem;
+  font-size: 1rem;
+  letter-spacing: var(--mainSpacing);
+  text-transform: capitalize;
+  margin-bottom: 30px;
+}
+
+#flyout-menu h3 {
+  font-size: 1.5rem;
   letter-spacing: var(--mainSpacing);
   text-transform: capitalize;
   margin-bottom: 30px;
