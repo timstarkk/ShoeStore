@@ -12,6 +12,14 @@ export default function CartItem({ item }) {
                 <div className="cart-info">
                     <h4 className="item-name">{name}</h4>
                     <p className="item-price">${price}</p>
+                    <div className="plus-minus-area">
+                        <div className="minus-one">
+                            -
+                        </div>
+                        <div className="plus-one">
+                            +
+                        </div>
+                    </div>
                 </div>
             </div>
             <div className="line" />
