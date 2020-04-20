@@ -14,6 +14,11 @@ export default class ShoppingCart extends Component {
     render() {
         let { toggleCart, cartVisible, cartItemsData } = this.context;
         let visibility = "hide";
+        let subtotal = 0;
+
+        for (const item of cartItemsData) {
+            subtotal += item.price * item.amount
+        };
 
         if (cartVisible) {
             visibility = 'show';
@@ -41,7 +46,7 @@ export default class ShoppingCart extends Component {
                         <div className="outer-line" />
                         <div id="subtotal-area">
                             <h5>subtotal</h5>
-                            <h5>$0.00</h5>
+                            <h5>${subtotal}</h5>
                         </div>
                         <div className="disclaimer">
                             <p>Taxes and shipping calculated at checkout</p>
