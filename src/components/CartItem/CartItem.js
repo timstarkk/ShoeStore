@@ -2,8 +2,10 @@ import React from 'react';
 import './CartItem.css';
 
 export default function CartItem({ item }) {
-    const { name, images, price } = item;
+    let { name, images, price, amount } = item;
     const img = images[0].imageFields.file.url;
+
+    price = price * amount;
 
     return (
         <div className="cart-item">
