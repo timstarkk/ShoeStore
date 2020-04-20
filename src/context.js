@@ -306,8 +306,9 @@ class ItemProvider extends Component {
             `
 
             API.graphql(graphqlOperation(getItemData)).then(res => {
+                res.data.getStoreItem.fields.amount = amount;
                 cartItemsArray.push(res.data.getStoreItem.fields);
-                // one setState would be preferred
+
                 this.setState({
                     cartItemsData: cartItemsArray
                 })
