@@ -1,7 +1,8 @@
 import React from 'react';
 import './CartItem.css';
+import { withItemConsumer } from '../../context';
 
-export default function CartItem({ item }) {
+function CartItem({ item, context }) {
     let { name, images, price, amount } = item;
     const img = images[0].imageFields.file.url;
 
@@ -29,3 +30,5 @@ export default function CartItem({ item }) {
         </div>
     )
 }
+
+export default withItemConsumer(CartItem);
