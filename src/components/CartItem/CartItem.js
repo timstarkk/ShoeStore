@@ -17,7 +17,7 @@ export default function CartItem({ item }) {
                         <div className="plus-minus minus-one">
                             -
                         </div>
-                        <div className="amount-area">0</div>
+                        <div className="amount-area">{amount}</div>
                         <div className="plus-minus plus-one">
                             +
                         </div>
