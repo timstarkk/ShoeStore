@@ -36,9 +36,11 @@ export default class ShoppingCart extends Component {
             <>
                 <div id="menu-background" className={visibility} onClick={() => toggleCart()} />
                 <div id="flyout-menu" className={visibility}>
-                    <CloseButton id="close-button" onClick={() => toggleCart()} />
-                    <h3 id="your-cart">Your Cart</h3>
-                    <div className="outer-line" />
+                    <div className="top-area">
+                        <CloseButton id="close-button" onClick={() => toggleCart()} />
+                        <h3 id="your-cart">Your Cart</h3>
+                        <div className="outer-line" />
+                    </div>
                     <div id="cart-items-area">
                         <CartList cartItems={cartItemsData} />
                     </div>
