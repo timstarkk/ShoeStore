@@ -269,41 +269,60 @@ class ItemProvider extends Component {
     };
 
     getCartItems = () => {
-        Auth.currentSession()
-            .then(data => {
-                let userSub = data.accessToken.payload.sub;
-                const getCart = `
-                    query {
-                        listShoppingCarts(filter: {
-                            userSub: {
-                                contains: "${userSub}"
-                            }
-                        }) {
-                            items {
-                                id
+        if (Object.keys(this.state.currentUser).length === 0) {
+            const cartItemsArray = []
+            const shoppingCart = JSON.parse(localStorage.getItem("shoppingCart"))
+            const cartItems = shoppingCart.items;
+            console.log(cartItems);
+            for (const key in cartItems) {
+                const itemId = key;
+                const amount = cartItems[key];
+                console.log(key + " " + amount)
+                cartItemsArray.push({
+                    itemId,
+                    amount
+                })
+                
+                this.getCartItemsData(cartItemsArray);
+            }
+        } else {
+            Auth.currentSession()
+                .then(data => {
+                    let userSub = data.accessToken.payload.sub;
+                    console.log(userSub);
+                    const getCart = `
+                        query {
+                            listShoppingCarts(filter: {
+                                userSub: {
+                                    contains: "${userSub}"
+                                }
+                            }) {
                                 items {
-                                    itemId
-                                    amount
+                                    id
+                                    items {
+                                        itemId
+                                        amount
+                                    }
                                 }
                             }
                         }
-                    }
-                `
-
-                API.graphql(graphqlOperation(getCart)).then(res => {
-                    const cartId = res.data.listShoppingCarts.items[0].id
-                    let cartItems = res.data.listShoppingCarts.items[0].items
-
-                    this.getCartItemsData(cartItems);
-                    this.setState({
-                        cartId
-                    })
+                    `
+    
+                    API.graphql(graphqlOperation(getCart)).then(res => {
+                        const cartId = res.data.listShoppingCarts.items[0].id
+                        let cartItems = res.data.listShoppingCarts.items[0].items
+                        console.log(cartItems);
+    
+                        this.getCartItemsData(cartItems);
+                        this.setState({
+                            cartId
+                        })
+                    });
+                })
+                .catch(err => {
+                    console.log(err);
                 });
-            })
-            .catch(err => {
-                console.log(err);
-            });
-
+        }
     };
 
     getCartItemsData = (cartItems) => {
@@ -339,6 +358,7 @@ class ItemProvider extends Component {
                 res.data.getStoreItem.fields.itemId = itemId;
                 cartItemsArray.push(res.data.getStoreItem.fields);
 
+                console.log(cartItemsArray);
                 this.setState({
                     cartItemsData: cartItemsArray
                 })
