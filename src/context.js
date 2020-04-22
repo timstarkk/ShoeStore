@@ -319,14 +319,14 @@ class ItemProvider extends Component {
         }
     };
 
-    handlePlusMinus = (itemId, amount, operator) => {
+    handlePlusMinus = (itemId, amount, operator, index) => {
         const cartId = this.state.cartId;
         const userSub = this.state.currentUser.sub
 
         if (operator === "plus") {
-            amount ++;
+            amount++;
         } else {
-            amount --;
+            amount--;
         }
 
         let updatedItem = {
@@ -334,7 +334,7 @@ class ItemProvider extends Component {
             amount
         }
 
-        
+
         const getCurrentCart = `
         query {
             listShoppingCarts(filter: {
@@ -360,7 +360,7 @@ class ItemProvider extends Component {
                     cartItems[index].amount = amount;
                 }
             }
-    
+
             let stringifiedItems = JSON.stringify(cartItems);
             let unquotedItems = stringifiedItems.replace(/"([^"]+)":/g, '$1:');
 
@@ -373,7 +373,13 @@ class ItemProvider extends Component {
                 }
             `
 
-            API.graphql(graphqlOperation(updateCart)).then(res => this.setState({})).catch(err => console.log(err));
+            API.graphql(graphqlOperation(updateCart)).then(res => {
+                let cartItemsData = this.state.cartItemsData;
+                cartItemsData[index].amount = amount;
+                this.setState({
+                    cartItemsData
+                });
+            }).catch(err => console.log(err));
         })
     };
 
