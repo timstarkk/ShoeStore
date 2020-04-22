@@ -186,26 +186,53 @@ class ItemProvider extends Component {
 
         API.graphql(graphqlOperation(checkForCart)).then(res => {
             let cartExists = res.data.listShoppingCarts.items.length;
+            let itemExists = false;
 
             if (cartExists) {
                 // retrieve and prepare items data
                 let cartId = res.data.listShoppingCarts.items[0].id;
                 let cartItems = res.data.listShoppingCarts.items[0].items;
-                cartItems.push(newItem);
-                let stringifiedItems = JSON.stringify(cartItems);
-                let unquotedItems = stringifiedItems.replace(/"([^"]+)":/g, '$1:');
 
-                const updateCart = `
-                    mutation {
-                        updateShoppingCart(input: {
-                        id: "${cartId}"
-                        items: ${unquotedItems}
-                        }) {items {itemId amount}}
+
+                for (const [index, item] of cartItems.entries()) {
+                    if (item.itemId === itemId) {
+                        cartItems[index].amount += this.state.addAmount;
+                        itemExists = true;
                     }
-                `
+                }
 
-                // update cart with new item added
-                API.graphql(graphqlOperation(updateCart)).then(() => console.log('update successful')).catch(err => console.log(`you broke it `, err));
+                if (itemExists) {
+                    let stringifiedItems = JSON.stringify(cartItems);
+                    let unquotedItems = stringifiedItems.replace(/"([^"]+)":/g, '$1:');
+
+                    const updateCart = `
+                        mutation {
+                            updateShoppingCart(input: {
+                            id: "${cartId}"
+                            items: ${unquotedItems}
+                            }) {items {itemId amount}}
+                        }
+                    `
+
+                    // update cart with updated item amount
+                    API.graphql(graphqlOperation(updateCart)).then(() => console.log('update successful')).catch(err => console.log(`you broke it `, err));
+                } else {
+                    cartItems.push(newItem);
+                    let stringifiedItems = JSON.stringify(cartItems);
+                    let unquotedItems = stringifiedItems.replace(/"([^"]+)":/g, '$1:');
+
+                    const updateCart = `
+                        mutation {
+                            updateShoppingCart(input: {
+                            id: "${cartId}"
+                            items: ${unquotedItems}
+                            }) {items {itemId amount}}
+                        }
+                    `
+
+                    // update cart with new item added
+                    API.graphql(graphqlOperation(updateCart)).then(() => console.log('update successful')).catch(err => console.log(`you broke it `, err));
+                }
             } else {
                 // if doesn't exist, create that cart
                 const createCart = `
