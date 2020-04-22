@@ -1,13 +1,25 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './CartItem.css';
 import { withItemConsumer } from '../../context';
 
-function CartItem({ item, context }) {
-    let { name, images, price, amount } = item;
+function CartItem({ id, item, context }) {
+    let  [,setState]=useState();
+    const { handlePlusMinus, cartId, cartItemsData } = context;
+    let { name, images, price, itemId } = item;
     const img = images[0].imageFields.file.url;
-
+    let amount = cartItemsData[id].amount;
     price = price * amount;
 
+    function handleMinusClick () {
+        handlePlusMinus( itemId, amount, "minus" );
+        setState({});
+    }
+
+    function handlePlusClick () {
+        handlePlusMinus( itemId, amount, "plus" );
+        setState({});
+    }
+    
     return (
         <div className="cart-item">
             <div className="cart-details">
@@ -15,11 +27,11 @@ function CartItem({ item, context }) {
                 <div className="cart-info">
                     <h4 className="item-name">{name}</h4>
                     <div className="plus-minus-area">
-                        <div className="plus-minus minus-one">
+                        <div className="plus-minus minus-one" onClick={handleMinusClick}>
                             -
                         </div>
                         <div className="amount-area">{amount}</div>
-                        <div className="plus-minus plus-one">
+                        <div className="plus-minus plus-one" onClick={handlePlusClick}>
                             +
                         </div>
                     </div>

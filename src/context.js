@@ -22,6 +22,7 @@ class ItemProvider extends Component {
         addAmount: 1,
         cartVisible: false,
         cartItemsData: [],
+        cartId: ''
     };
 
     async componentDidMount() {
@@ -164,9 +165,6 @@ class ItemProvider extends Component {
             amount: this.state.addAmount,
         }
 
-        console.log(itemId);
-        console.log(userSub);
-
         // checks for current user cart
         const checkForCart = `
         query {
@@ -266,9 +264,13 @@ class ItemProvider extends Component {
                 `
 
                 API.graphql(graphqlOperation(getCart)).then(res => {
+                    const cartId = res.data.listShoppingCarts.items[0].id
                     let cartItems = res.data.listShoppingCarts.items[0].items
 
                     this.getCartItemsData(cartItems);
+                    this.setState({
+                        cartId
+                    })
                 });
             })
             .catch(err => {
@@ -307,6 +309,7 @@ class ItemProvider extends Component {
 
             API.graphql(graphqlOperation(getItemData)).then(res => {
                 res.data.getStoreItem.fields.amount = amount;
+                res.data.getStoreItem.fields.itemId = itemId;
                 cartItemsArray.push(res.data.getStoreItem.fields);
 
                 this.setState({
@@ -314,6 +317,64 @@ class ItemProvider extends Component {
                 })
             }).catch(err => console.log(err.message));
         }
+    };
+
+    handlePlusMinus = (itemId, amount, operator) => {
+        const cartId = this.state.cartId;
+        const userSub = this.state.currentUser.sub
+
+        if (operator === "plus") {
+            amount ++;
+        } else {
+            amount --;
+        }
+
+        let updatedItem = {
+            itemId,
+            amount
+        }
+
+        
+        const getCurrentCart = `
+        query {
+            listShoppingCarts(filter: {
+                userSub: {
+                    contains: "${userSub}"
+                }
+            }) {
+                items {
+                    id
+                    items {
+                        itemId
+                        amount
+                    }
+                }
+            }
+        }
+        `
+
+        API.graphql(graphqlOperation(getCurrentCart)).then(res => {
+            let cartItems = res.data.listShoppingCarts.items[0].items;
+            for (const [index, item] of cartItems.entries()) {
+                if (item.itemId === itemId) {
+                    cartItems[index].amount = amount;
+                }
+            }
+    
+            let stringifiedItems = JSON.stringify(cartItems);
+            let unquotedItems = stringifiedItems.replace(/"([^"]+)":/g, '$1:');
+
+            const updateCart = `
+                mutation {
+                    updateShoppingCart(input: {
+                    id: "${cartId}"
+                    items: ${unquotedItems}
+                    }) {items {itemId amount}}
+                }
+            `
+
+            API.graphql(graphqlOperation(updateCart)).then(res => this.setState({})).catch(err => console.log(err));
+        })
     };
 
     render() {
@@ -329,7 +390,8 @@ class ItemProvider extends Component {
                 toggleCart: this.toggleCart,
                 getCartItems: this.getCartItems,
                 getCartItemsData: this.getCartItemsData,
-                afterSignOut: this.afterSignOut
+                afterSignOut: this.afterSignOut,
+                handlePlusMinus: this.handlePlusMinus
             }}>
                 {this.props.children}
             </ItemContext.Provider>
