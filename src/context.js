@@ -367,88 +367,119 @@ class ItemProvider extends Component {
     };
 
     handlePlusMinus = (itemId, amount, operator, index) => {
-        const cartId = this.state.cartId;
-        const userSub = this.state.currentUser.sub
-
-        const getCurrentCart = `
-            query {
-                listShoppingCarts(filter: {
-                    userSub: {
-                        contains: "${userSub}"
-                    }
-                }) {
-                    items {
-                        id
-                        items {
-                            itemId
-                            amount
-                        }
-                    }
-                }
-            }
-        `
-
         if (operator === "plus") {
             amount++;
         } else {
             amount--;
         }
 
-        if (amount === 0) {
-            // remove item from cart
-            API.graphql(graphqlOperation(getCurrentCart)).then(res => {
-                let cartItems = res.data.listShoppingCarts.items[0].items;
-                cartItems.splice(index, 1);
-                let stringifiedItems = JSON.stringify(cartItems);
-                let unquotedItems = stringifiedItems.replace(/"([^"]+)":/g, '$1:');
-
-                const updateCart = `
-                    mutation {
-                        updateShoppingCart(input: {
-                        id: "${cartId}"
-                        items: ${unquotedItems}
-                        }) {items {itemId amount}}
-                    }
-                `
-
-                API.graphql(graphqlOperation(updateCart)).then(res => {
-                    let cartItemsData = this.state.cartItemsData;
-                    cartItemsData.splice(index, 1);
-                    this.setState({
-                        cartItemsData
-                    });
-                }).catch(err => console.log(err));
-            }).catch(err => console.log(err));
-        } else {
-
-            API.graphql(graphqlOperation(getCurrentCart)).then(res => {
-                let cartItems = res.data.listShoppingCarts.items[0].items;
-                for (const [index, item] of cartItems.entries()) {
+        if (Object.keys(this.state.currentUser).length === 0) {
+            console.log('user not logged in');
+            if (amount === 0) {
+                const shoppingCart = JSON.parse(localStorage.getItem('shoppingCart'))
+                delete shoppingCart.items[`${itemId}`];
+                console.log(shoppingCart)
+                localStorage.setItem('shoppingCart', JSON.stringify(shoppingCart));
+                
+                let cartItemsData = this.state.cartItemsData;
+                cartItemsData.splice(index, 1);
+                this.setState({
+                    cartItemsData
+                })
+            } else {
+                const shoppingCart = JSON.parse(localStorage.getItem('shoppingCart'))
+                shoppingCart.items[`${itemId}`] = amount;
+                localStorage.setItem('shoppingCart', JSON.stringify(shoppingCart));
+    
+                let cartItemsData = this.state.cartItemsData;
+                
+                for (const [index, item] of cartItemsData.entries()) {
                     if (item.itemId === itemId) {
-                        cartItems[index].amount = amount;
+                        cartItemsData[index].amount = amount;
                     }
                 }
-
-                let stringifiedItems = JSON.stringify(cartItems);
-                let unquotedItems = stringifiedItems.replace(/"([^"]+)":/g, '$1:');
-
-                const updateCart = `
-                    mutation {
-                        updateShoppingCart(input: {
-                        id: "${cartId}"
-                        items: ${unquotedItems}
-                        }) {items {itemId amount}}
+    
+                console.log(cartItemsData);
+                this.setState({})
+            }
+        } else {
+            const cartId = this.state.cartId;
+            const userSub = this.state.currentUser.sub
+    
+            const getCurrentCart = `
+                query {
+                    listShoppingCarts(filter: {
+                        userSub: {
+                            contains: "${userSub}"
+                        }
+                    }) {
+                        items {
+                            id
+                            items {
+                                itemId
+                                amount
+                            }
+                        }
                     }
-                `
-
-                API.graphql(graphqlOperation(updateCart)).then(res => {
-                    let cartItemsData = this.state.cartItemsData;
-                    cartItemsData[index].amount = amount;
-                    this.setState({
-                        cartItemsData
-                    });
+                }
+            `
+    
+            if (amount === 0) {
+                // remove item from cart
+                API.graphql(graphqlOperation(getCurrentCart)).then(res => {
+                    let cartItems = res.data.listShoppingCarts.items[0].items;
+                    cartItems.splice(index, 1);
+                    let stringifiedItems = JSON.stringify(cartItems);
+                    let unquotedItems = stringifiedItems.replace(/"([^"]+)":/g, '$1:');
+    
+                    const updateCart = `
+                        mutation {
+                            updateShoppingCart(input: {
+                            id: "${cartId}"
+                            items: ${unquotedItems}
+                            }) {items {itemId amount}}
+                        }
+                    `
+    
+                    API.graphql(graphqlOperation(updateCart)).then(res => {
+                        let cartItemsData = this.state.cartItemsData;
+                        cartItemsData.splice(index, 1);
+                        this.setState({
+                            cartItemsData
+                        });
+                    }).catch(err => console.log(err));
                 }).catch(err => console.log(err));
-            })
+            } else {
+    
+                API.graphql(graphqlOperation(getCurrentCart)).then(res => {
+                    let cartItems = res.data.listShoppingCarts.items[0].items;
+                    for (const [index, item] of cartItems.entries()) {
+                        if (item.itemId === itemId) {
+                            cartItems[index].amount = amount;
+                        }
+                    }
+    
+                    let stringifiedItems = JSON.stringify(cartItems);
+                    let unquotedItems = stringifiedItems.replace(/"([^"]+)":/g, '$1:');
+    
+                    const updateCart = `
+                        mutation {
+                            updateShoppingCart(input: {
+                            id: "${cartId}"
+                            items: ${unquotedItems}
+                            }) {items {itemId amount}}
+                        }
+                    `
+    
+                    API.graphql(graphqlOperation(updateCart)).then(res => {
+                        let cartItemsData = this.state.cartItemsData;
+                        cartItemsData[index].amount = amount;
+                        this.setState({
+                            cartItemsData
+                        });
+                    }).catch(err => console.log(err));
+                })
+            }
         }
     };
 
