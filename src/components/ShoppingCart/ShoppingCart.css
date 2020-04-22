@@ -90,7 +90,7 @@
   background: var(--primaryColor);
 }
 #cart-items-area {
-  height: auto;
+  flex: 2;
   overflow: scroll;
   -ms-overflow-style: none;
 }
