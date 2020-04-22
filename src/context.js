@@ -329,12 +329,6 @@ class ItemProvider extends Component {
             amount--;
         }
 
-        let updatedItem = {
-            itemId,
-            amount
-        }
-
-
         const getCurrentCart = `
         query {
             listShoppingCarts(filter: {
