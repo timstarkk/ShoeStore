@@ -9,8 +9,6 @@ function CartItem({ id, item, context }) {
     let amount = cartItemsData[id].amount;
     price = price * amount;
 
-    // console.log(context);
-
     function handleMinusClick() {
         handlePlusMinus(itemId, amount, "minus", id);
     }
