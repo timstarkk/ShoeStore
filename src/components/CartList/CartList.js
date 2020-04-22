@@ -6,8 +6,8 @@ export default function CartList({ cartItems }) {
     return (
         <div>
             {
-                cartItems.map(item => {
-                    return <CartItem item={item} />;
+                cartItems.map((item, index) => {
+                    return <CartItem id={index} item={item} />;
                 })
             }
         </div>
