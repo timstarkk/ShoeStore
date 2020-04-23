@@ -20,6 +20,7 @@ class ItemProvider extends Component {
         maxPrice: 0,
         currentUser: {},
         addAmount: 1,
+        amount: 0,
         cartVisible: false,
         cartItemsData: [],
         cartId: ''
@@ -111,8 +112,7 @@ class ItemProvider extends Component {
     };
 
     setCurrentUser = userInfo => {
-        console.log('setting user info');
-        console.log(userInfo);
+        this.checkLocalCart();
         this.setState({
             currentUser: userInfo
         })
@@ -157,12 +157,18 @@ class ItemProvider extends Component {
         }
     };
 
-    userCartAdd = (item) => {
+    userCartAdd = (item, addingFromLocalStorage) => {
         let itemId = item.id;
         let userSub = this.state.currentUser.sub;
-        let newItem = {
-            itemId,
-            amount: this.state.addAmount,
+        let newItem = {};
+
+        if (addingFromLocalStorage) {
+            console.log('adding from local storage');
+        } else {
+            newItem = {
+                itemId,
+                amount: this.state.addAmount,
+            }
         }
 
         // checks for current user cart
@@ -480,6 +486,21 @@ class ItemProvider extends Component {
                     }).catch(err => console.log(err));
                 })
             }
+        }
+    };
+
+    checkLocalCart = () => {
+        const shoppingCart = JSON.parse(localStorage.getItem('shoppingCart'))
+        console.log(shoppingCart.items);
+        for (const key in shoppingCart.items) {
+            // console.log(key);
+            const item = {
+                key
+            }
+
+            console.log(item);
+            // console.log(key);
+            // this.userCartAdd(item, true)
         }
     };
 
