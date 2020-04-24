@@ -158,13 +158,12 @@ class ItemProvider extends Component {
     };
 
     userCartAdd = (item, addingFromLocalStorage) => {
+        console.log('running user cart add');
         let itemId = item.id;
         let userSub = this.state.currentUser.sub;
         let newItem = {};
 
         if (addingFromLocalStorage) {
-            console.log('adding from local storage');
-            console.log(userSub)
             newItem = {
                 itemId: item.id,
                 amount: item.amount
@@ -200,11 +199,10 @@ class ItemProvider extends Component {
             let itemExists = false;
 
             if (cartExists) {
-                console.log('cart exists');
                 // retrieve and prepare items data
                 let cartId = res.data.listShoppingCarts.items[0].id;
                 let cartItems = res.data.listShoppingCarts.items[0].items;
-
+                console.log(cartItems);
 
                 for (const [index, cartItem] of cartItems.entries()) {
                     if (cartItem.itemId === itemId) {
@@ -215,11 +213,13 @@ class ItemProvider extends Component {
                             cartItems[index].amount += this.state.addAmount;
                         }
 
+                        console.log(cartItem);
                         itemExists = true;
                     }
                 }
 
                 if (itemExists) {
+                    console.log('item exists');
                     let stringifiedItems = JSON.stringify(cartItems);
                     let unquotedItems = stringifiedItems.replace(/"([^"]+)":/g, '$1:');
 
@@ -233,7 +233,7 @@ class ItemProvider extends Component {
                     `
 
                     // update cart with updated item amount
-                    API.graphql(graphqlOperation(updateCart)).then(() => console.log('update successful')).catch(err => console.log(`you broke it `, err));
+                    API.graphql(graphqlOperation(updateCart)).then(() => console.log('updated item in cart db')).catch(err => console.log(`you broke it `, err));
                 } else {
                     console.log(cartItems);
                     console.log(newItem);
@@ -251,7 +251,7 @@ class ItemProvider extends Component {
                     `
 
                     // update cart with new item added
-                    API.graphql(graphqlOperation(updateCart)).then(() => console.log('update successful')).catch(err => console.log(`you broke it `, err));
+                    API.graphql(graphqlOperation(updateCart)).then(() => console.log('added item to cart db')).catch(err => console.log(`you broke it `, err));
                 }
             } else {
                 // if doesn't exist, create that cart
@@ -290,8 +290,7 @@ class ItemProvider extends Component {
     };
 
     toggleCart = () => {
-        this.getCartItems();
-        this.setState({
+         this.setState({
             cartVisible: !this.state.cartVisible
         });
     };
@@ -337,6 +336,7 @@ class ItemProvider extends Component {
                     `
 
                     API.graphql(graphqlOperation(getCart)).then(res => {
+                        console.log(res);
                         const cartId = res.data.listShoppingCarts.items[0].id
                         let cartItems = res.data.listShoppingCarts.items[0].items
                         console.log(cartItems);
@@ -512,6 +512,7 @@ class ItemProvider extends Component {
     };
 
     checkLocalCart = () => {
+        console.log('checking local cart');
         const shoppingCart = JSON.parse(localStorage.getItem('shoppingCart'))
         console.log(shoppingCart.items);
         for (const key in shoppingCart.items) {
