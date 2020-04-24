@@ -19,7 +19,7 @@
 
 .account-section .line {
     width: 5rem;
-    height: 5px;
+    height: 2px;
     margin: 0 auto;
     background: var(--primaryColor);
     margin-bottom: 4rem;
