@@ -114,8 +114,12 @@ class ItemProvider extends Component {
     setCurrentUser = userInfo => {
         this.setState({
             currentUser: userInfo
-        })
-        this.checkLocalCart();
+        }, () => {
+            if (this.state.currentUser.username) {
+                this.checkLocalCart();
+            }
+        });
+
     };
 
     afterSignOut = () => {
@@ -157,22 +161,16 @@ class ItemProvider extends Component {
         }
     };
 
-    userCartAdd = (item, addingFromLocalStorage) => {
+    userCartAdd = (item) => {
         console.log('running user cart add');
         let itemId = item.id;
         let userSub = this.state.currentUser.sub;
         let newItem = {};
 
-        if (addingFromLocalStorage) {
-            newItem = {
-                itemId: item.id,
-                amount: item.amount
-            };
-        } else {
-            newItem = {
-                itemId,
-                amount: this.state.addAmount,
-            }
+        
+        newItem = {
+            itemId,
+            amount: this.state.addAmount,
         }
 
         // checks for current user cart
@@ -206,12 +204,7 @@ class ItemProvider extends Component {
 
                 for (const [index, cartItem] of cartItems.entries()) {
                     if (cartItem.itemId === itemId) {
-
-                        if (addingFromLocalStorage) {
-                            cartItems[index].amount += item.amount;
-                        } else {
-                            cartItems[index].amount += this.state.addAmount;
-                        }
+                        cartItems[index].amount += this.state.addAmount;
 
                         console.log(cartItem);
                         itemExists = true;
@@ -255,13 +248,7 @@ class ItemProvider extends Component {
                 }
             } else {
                 // if doesn't exist, create that cart
-                let amount;
-
-                if (addingFromLocalStorage) {
-                    amount = item.amount;
-                } else {
-                    amount = this.state.addAmount;
-                }
+                let amount = this.state.addAmount;
 
                 const createCart = `
                     mutation {
@@ -289,6 +276,107 @@ class ItemProvider extends Component {
         }).catch(err => console.log(err))
     };
 
+    addFromLocalStorage = (newItems) => {
+    console.log('running add from local storage');
+    let userSub = this.state.currentUser.sub;
+
+    // checks for current user cart
+    const checkForCart = `
+    query {
+        listShoppingCarts(filter: {
+            userSub: {
+                contains: "${userSub}"
+            }
+        }) {
+            items {
+                id
+                items {
+                    itemId
+                    amount
+                }
+            }
+        }
+    }
+    `
+
+    API.graphql(graphqlOperation(checkForCart)).then(res => {
+        let cartExists = res.data.listShoppingCarts.items.length;
+        
+        if (cartExists) {
+            // retrieve and prepare items data
+            let cartId = res.data.listShoppingCarts.items[0].id;
+            let cartItems = res.data.listShoppingCarts.items[0].items;
+            console.log(cartItems);
+
+            for (const [index, item] of newItems.entries()) {
+                let itemExists = false;
+
+                for (const cartItem of cartItems){
+                    if (item.itemId === cartItem.itemId) {
+                    cartItem.amount += item.amount;
+                    itemExists = true;
+                    }
+                }
+
+                if (!itemExists) {
+                    cartItems.push(item);
+                }
+            }
+
+                let stringifiedItems = JSON.stringify(cartItems);
+                let unquotedItems = stringifiedItems.replace(/"([^"]+)":/g, '$1:');
+
+                const updateCart = `
+                    mutation {
+                        updateShoppingCart(input: {
+                        id: "${cartId}"
+                        items: ${unquotedItems}
+                        }) {items {itemId amount}}
+                    }
+                `
+
+                // update cart with new item added
+                API.graphql(graphqlOperation(updateCart)).then(() => {
+                    // clear local storage
+                    let emptyCart = {
+                        items: {}
+                    }
+                    localStorage.setItem('shoppingCart', JSON.stringify(emptyCart));
+                }).catch(err => console.log(`you broke it `, err));
+            }
+         else {
+            // if doesn't exist, create that cart
+            let stringifiedItems = JSON.stringify(newItems);
+            let unquotedItems = stringifiedItems.replace(/"([^"]+)":/g, '$1:');
+
+            const createCart = `
+                mutation {
+                    createShoppingCart(input: {
+                    userSub: "${userSub}"
+                    items: ${unquotedItems}
+                    }) { 
+                        id 
+                        userSub 
+                        items {
+                            itemId
+                            amount
+                        }
+                    }
+                }
+            `
+            // create cart with selected item and amount
+            API.graphql(graphqlOperation(createCart)).then(() => {
+                    // clear local storage
+                    let emptyCart = {
+                        items: {}
+                    }
+                    localStorage.setItem('shoppingCart', JSON.stringify(emptyCart));
+            }).catch(err => console.log(`whoops `, err));
+        }
+
+    }).catch(err => console.log(err))
+    };
+
     toggleCart = () => {
         this.getCartItems();
         this.setState({
@@ -297,7 +385,9 @@ class ItemProvider extends Component {
     };
 
     getCartItems = () => {
+        console.log('hello from get cart items');
         if (Object.keys(this.state.currentUser).length === 0) {
+            console.log('not signed in');
             const cartItemsArray = []
             const shoppingCart = JSON.parse(localStorage.getItem("shoppingCart"))
             const cartItems = shoppingCart.items;
@@ -313,6 +403,7 @@ class ItemProvider extends Component {
             }
             this.getCartItemsData(cartItemsArray);
         } else {
+            console.log('user is signed in');
             Auth.currentSession()
                 .then(data => {
                     let userSub = data.accessToken.payload.sub;
@@ -394,7 +485,7 @@ class ItemProvider extends Component {
         }
     };
 
-    handlePlusMinus = (itemId, amount, operator, index) => {
+    handlePlusMinus = (itemId, amount, operator, index) => { 
         if (operator === "plus") {
             amount++;
         } else {
@@ -513,17 +604,21 @@ class ItemProvider extends Component {
 
     checkLocalCart = () => {
         console.log('checking local cart');
+        console.log(this.state.cartItemsData)
         const shoppingCart = JSON.parse(localStorage.getItem('shoppingCart'))
         console.log(shoppingCart.items);
+        const newItems = [];
         for (const key in shoppingCart.items) {
 
             const item = {
-                id: key,
+                itemId: key,
                 amount: shoppingCart.items[key]
             }
-
-            this.userCartAdd(item, true)
+            newItems.push(item);
         }
+
+        this.addFromLocalStorage(newItems);
+        
     };
 
     render() {
