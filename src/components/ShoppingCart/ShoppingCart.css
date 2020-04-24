@@ -132,4 +132,8 @@
   #flyout-menu {
     width: 100vw;
   }
+
+  #close-button {
+    right: 15px;
+  }
 }
