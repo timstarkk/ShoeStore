@@ -290,7 +290,8 @@ class ItemProvider extends Component {
     };
 
     toggleCart = () => {
-         this.setState({
+        this.getCartItems();
+        this.setState({
             cartVisible: !this.state.cartVisible
         });
     };
@@ -310,7 +311,6 @@ class ItemProvider extends Component {
                     amount
                 })
             }
-            
             this.getCartItemsData(cartItemsArray);
         } else {
             Auth.currentSession()
