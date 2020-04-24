@@ -127,3 +127,9 @@
 .checkout-arrow {
   font-size: 1.5rem;
 }
+
+@media screen and (max-width: 399px) {
+  #flyout-menu {
+    width: 100vw;
+  }
+}
