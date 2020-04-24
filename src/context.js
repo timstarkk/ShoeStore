@@ -112,10 +112,10 @@ class ItemProvider extends Component {
     };
 
     setCurrentUser = userInfo => {
-        this.checkLocalCart();
         this.setState({
             currentUser: userInfo
         })
+        this.checkLocalCart();
     };
 
     afterSignOut = () => {
@@ -164,6 +164,11 @@ class ItemProvider extends Component {
 
         if (addingFromLocalStorage) {
             console.log('adding from local storage');
+            console.log(userSub)
+            newItem = {
+                itemId: item.id,
+                amount: item.amount
+            };
         } else {
             newItem = {
                 itemId,
@@ -195,14 +200,21 @@ class ItemProvider extends Component {
             let itemExists = false;
 
             if (cartExists) {
+                console.log('cart exists');
                 // retrieve and prepare items data
                 let cartId = res.data.listShoppingCarts.items[0].id;
                 let cartItems = res.data.listShoppingCarts.items[0].items;
 
 
-                for (const [index, item] of cartItems.entries()) {
-                    if (item.itemId === itemId) {
-                        cartItems[index].amount += this.state.addAmount;
+                for (const [index, cartItem] of cartItems.entries()) {
+                    if (cartItem.itemId === itemId) {
+
+                        if (addingFromLocalStorage) {
+                            cartItems[index].amount += item.amount;
+                        } else {
+                            cartItems[index].amount += this.state.addAmount;
+                        }
+
                         itemExists = true;
                     }
                 }
@@ -223,6 +235,8 @@ class ItemProvider extends Component {
                     // update cart with updated item amount
                     API.graphql(graphqlOperation(updateCart)).then(() => console.log('update successful')).catch(err => console.log(`you broke it `, err));
                 } else {
+                    console.log(cartItems);
+                    console.log(newItem);
                     cartItems.push(newItem);
                     let stringifiedItems = JSON.stringify(cartItems);
                     let unquotedItems = stringifiedItems.replace(/"([^"]+)":/g, '$1:');
@@ -241,13 +255,21 @@ class ItemProvider extends Component {
                 }
             } else {
                 // if doesn't exist, create that cart
+                let amount;
+
+                if (addingFromLocalStorage) {
+                    amount = item.amount;
+                } else {
+                    amount = this.state.addAmount;
+                }
+
                 const createCart = `
                     mutation {
                         createShoppingCart(input: {
                         userSub: "${userSub}"
                         items: [{
                             itemId: "${itemId}"
-                            amount: ${this.state.addAmount}
+                            amount: ${amount}
                         }]
                         }) { 
                             id 
@@ -288,7 +310,7 @@ class ItemProvider extends Component {
                     itemId,
                     amount
                 })
-                
+
                 this.getCartItemsData(cartItemsArray);
             }
         } else {
@@ -313,12 +335,12 @@ class ItemProvider extends Component {
                             }
                         }
                     `
-    
+
                     API.graphql(graphqlOperation(getCart)).then(res => {
                         const cartId = res.data.listShoppingCarts.items[0].id
                         let cartItems = res.data.listShoppingCarts.items[0].items
                         console.log(cartItems);
-    
+
                         this.getCartItemsData(cartItems);
                         this.setState({
                             cartId
@@ -386,7 +408,7 @@ class ItemProvider extends Component {
                 delete shoppingCart.items[`${itemId}`];
                 console.log(shoppingCart)
                 localStorage.setItem('shoppingCart', JSON.stringify(shoppingCart));
-                
+
                 let cartItemsData = this.state.cartItemsData;
                 cartItemsData.splice(index, 1);
                 this.setState({
@@ -396,22 +418,22 @@ class ItemProvider extends Component {
                 const shoppingCart = JSON.parse(localStorage.getItem('shoppingCart'))
                 shoppingCart.items[`${itemId}`] = amount;
                 localStorage.setItem('shoppingCart', JSON.stringify(shoppingCart));
-    
+
                 let cartItemsData = this.state.cartItemsData;
-                
+
                 for (const [index, item] of cartItemsData.entries()) {
                     if (item.itemId === itemId) {
                         cartItemsData[index].amount = amount;
                     }
                 }
-    
+
                 console.log(cartItemsData);
                 this.setState({})
             }
         } else {
             const cartId = this.state.cartId;
             const userSub = this.state.currentUser.sub
-    
+
             const getCurrentCart = `
                 query {
                     listShoppingCarts(filter: {
@@ -429,7 +451,7 @@ class ItemProvider extends Component {
                     }
                 }
             `
-    
+
             if (amount === 0) {
                 // remove item from cart
                 API.graphql(graphqlOperation(getCurrentCart)).then(res => {
@@ -437,7 +459,7 @@ class ItemProvider extends Component {
                     cartItems.splice(index, 1);
                     let stringifiedItems = JSON.stringify(cartItems);
                     let unquotedItems = stringifiedItems.replace(/"([^"]+)":/g, '$1:');
-    
+
                     const updateCart = `
                         mutation {
                             updateShoppingCart(input: {
@@ -446,7 +468,7 @@ class ItemProvider extends Component {
                             }) {items {itemId amount}}
                         }
                     `
-    
+
                     API.graphql(graphqlOperation(updateCart)).then(res => {
                         let cartItemsData = this.state.cartItemsData;
                         cartItemsData.splice(index, 1);
@@ -456,7 +478,7 @@ class ItemProvider extends Component {
                     }).catch(err => console.log(err));
                 }).catch(err => console.log(err));
             } else {
-    
+
                 API.graphql(graphqlOperation(getCurrentCart)).then(res => {
                     let cartItems = res.data.listShoppingCarts.items[0].items;
                     for (const [index, item] of cartItems.entries()) {
@@ -464,10 +486,10 @@ class ItemProvider extends Component {
                             cartItems[index].amount = amount;
                         }
                     }
-    
+
                     let stringifiedItems = JSON.stringify(cartItems);
                     let unquotedItems = stringifiedItems.replace(/"([^"]+)":/g, '$1:');
-    
+
                     const updateCart = `
                         mutation {
                             updateShoppingCart(input: {
@@ -476,7 +498,7 @@ class ItemProvider extends Component {
                             }) {items {itemId amount}}
                         }
                     `
-    
+
                     API.graphql(graphqlOperation(updateCart)).then(res => {
                         let cartItemsData = this.state.cartItemsData;
                         cartItemsData[index].amount = amount;
@@ -493,14 +515,13 @@ class ItemProvider extends Component {
         const shoppingCart = JSON.parse(localStorage.getItem('shoppingCart'))
         console.log(shoppingCart.items);
         for (const key in shoppingCart.items) {
-            // console.log(key);
+
             const item = {
-                key
+                id: key,
+                amount: shoppingCart.items[key]
             }
 
-            console.log(item);
-            // console.log(key);
-            // this.userCartAdd(item, true)
+            this.userCartAdd(item, true)
         }
     };
 
