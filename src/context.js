@@ -310,9 +310,9 @@ class ItemProvider extends Component {
                     itemId,
                     amount
                 })
-
-                this.getCartItemsData(cartItemsArray);
             }
+            
+            this.getCartItemsData(cartItemsArray);
         } else {
             Auth.currentSession()
                 .then(data => {
