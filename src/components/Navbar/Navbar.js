@@ -136,19 +136,41 @@ class Navbar extends Component {
                         </div>
                         <ul className={this.state.isOpen ? "nav-links show-nav nav-scrolled" : "nav-links " + (this.state.scrolled ? 'nav-scrolled' : '') + (this.getLocation() !== '/' ? " nav-white" : "")}>
                             <li>
-                                <Link to="/">Home</Link>
+                                <Link to="/" onClick={() => {
+                                    this.setState({
+                                        isOpen: false
+                                    })
+                                }}>Home</Link>
                             </li>
                             <li>
-                                <Link to="/store">Store</Link>
+                                <Link to="/store" onClick={() => {
+                                    this.setState({
+                                        isOpen: false
+                                    })
+                                }}>Store</Link>
                             </li>
                             <li>
-                                <Link to="#">About</Link>
+                                <Link to="#" onClick={() => {
+                                    this.setState({
+                                        isOpen: false
+                                    })
+                                }}>About</Link>
                             </li>
                             <li>
-                                <Link onClick={() => this.accountButtonClick()}><AccountIcon id="account-link" /></Link>
+                                <Link onClick={() => {
+                                    this.accountButtonClick()
+                                    this.setState({
+                                        isOpen: false
+                                    })
+                                }}><AccountIcon id="account-link" /></Link>
                             </li>
                             <li>
-                                <a onClick={() => toggleCart()}><CartIcon id="cart-icon" /></a>
+                                <a onClick={() => {
+                                    toggleCart()
+                                    this.setState({
+                                        isOpen: false
+                                    })
+                                }}><CartIcon id="cart-icon" /></a>
                             </li>
                         </ul>
                     </div >
