@@ -25,7 +25,7 @@ export default class ConfirmForm extends Component {
             .then(() => {
                 this.setState({
                     confirmed: true,
-                    redirect: '/'
+                    redirect: '/account/signin'
                 })
             })
             .catch(error => console.log(error))
