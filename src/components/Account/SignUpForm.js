@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Auth } from 'aws-amplify';
 import './Account.css';
+import ConfirmForm from './ConfirmForm';
 
 export default class SignUpForm extends Component {
     constructor(props) {
@@ -34,7 +35,9 @@ export default class SignUpForm extends Component {
                 .catch(error => console.log(error))
 
             this.setState({
-                signedUp: true
+                signedUp: true,
+                username: '',
+                password: ''
             });
         } else {
             Auth.confirmSignUp(username, confirmationCode)
@@ -45,6 +48,8 @@ export default class SignUpForm extends Component {
     }
 
     handleChange(e) {
+        console.log(e.target.name);
+        console.log(e.target.value);
         this.setState({
             [e.target.name]: e.target.value
         });
@@ -54,21 +59,7 @@ export default class SignUpForm extends Component {
 
         if (signedUp) {
             return (
-                <div className="account-wrapper">
-                    <div className="account-section">
-                        <div className="container-wrapper">
-                            <h4>Confirm Account</h4>
-                            <div className="line" />
-                            <form onSubmit={this.handleSubmit}>
-                                <label>Username</label>
-                                <input type="text" name="username" onChange={this.handleChange} />
-                                <label>Confirmation Code</label>
-                                <input type="text" name="confirmationCode" onChange={this.handleChange} />
-                                <button>Confirm</button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
+                <ConfirmForm />
             )
         } else {
             return (
