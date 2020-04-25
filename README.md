@@ -14,7 +14,7 @@ Cannot run project locally since requires AWS credentials.
 
 To explore the project, visit: https://master.d1buvo1t3dd1m7.amplifyapp.com/
 
-#### use test acccount to sign-in: 
+### use test acccount to sign-in: 
 username: test  
 password: hiretimstark
 
