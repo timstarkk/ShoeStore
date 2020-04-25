@@ -12,7 +12,7 @@ Intended to be used as a template for construction of e-commerce sites for futur
 
 Cannot run project locally since requires AWS credentials.
 
-To explore the project, visit https://master.d39jz3uva366dw.amplifyapp.com/
+To explore the project, visit: https://master.d39jz3uva366dw.amplifyapp.com/
 
 ## Built With
 
