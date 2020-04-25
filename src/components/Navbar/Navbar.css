@@ -146,14 +146,19 @@
   }
   
   @media screen and (max-width: 399px) {
+    .nav-links.show-nav {
+      width: 100vw;
+      position: relative;
+      right: 32px;
+    }
+
     .account-container-container {
       z-index: 30;
       padding: 0px;
     }
-    
+
     .account-menu {
       width: 100%;
-      border-bottom: 2px solid var(--primaryColor);
     }
   }
 
