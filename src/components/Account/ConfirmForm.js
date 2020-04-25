@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Redirect } from "react-router-dom";
 import { Auth } from 'aws-amplify';
 import './Account.css';
 
