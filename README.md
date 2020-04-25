@@ -21,6 +21,7 @@ To explore the project, visit: https://master.d1buvo1t3dd1m7.amplifyapp.com/
 * [AWS DynamoDB](https://aws.amazon.com/dynamodb/) - Database
 * [AWS Cognito](https://aws.amazon.com/cognito/) - User Authentication
 * [AWS AppSync](https://aws.amazon.com/appsync/) - GraphQL API Interface / Database management
+* [AMAZON S3](https://aws.amazon.com/s3/) - Image Storage
 * [React Router Dom](https://www.npmjs.com/package/react-router-dom) - Routing
 * [React Icons](https://react-icons.netlify.com/#/) - Icons
 
