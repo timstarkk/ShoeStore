@@ -1,19 +1,25 @@
 {
-    "retail": {
+    "shoestore": {
         "awscloudformation": {
-            "AuthRoleName": "amplify-retail-retail-10947-authRole",
-            "UnauthRoleArn": "arn:aws:iam::493218721673:role/amplify-retail-retail-10947-unauthRole",
-            "AuthRoleArn": "arn:aws:iam::493218721673:role/amplify-retail-retail-10947-authRole",
+            "AuthRoleName": "amplify-shoestore-shoestore-102527-authRole",
+            "UnauthRoleArn": "arn:aws:iam::493218721673:role/amplify-shoestore-shoestore-102527-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::493218721673:role/amplify-shoestore-shoestore-102527-authRole",
             "Region": "us-east-1",
-            "DeploymentBucketName": "amplify-retail-retail-10947-deployment",
-            "UnauthRoleName": "amplify-retail-retail-10947-unauthRole",
-            "StackName": "amplify-retail-retail-10947",
-            "StackId": "arn:aws:cloudformation:us-east-1:493218721673:stack/amplify-retail-retail-10947/e66bcb60-7183-11ea-b0c0-1221171ce649",
-            "AmplifyAppId": "d1wisq96sy9j93"
+            "DeploymentBucketName": "amplify-shoestore-shoestore-102527-deployment",
+            "UnauthRoleName": "amplify-shoestore-shoestore-102527-unauthRole",
+            "StackName": "amplify-shoestore-shoestore-102527",
+            "StackId": "arn:aws:cloudformation:us-east-1:493218721673:stack/amplify-shoestore-shoestore-102527/fdc118c0-8708-11ea-bfcb-0e9711d18427",
+            "AmplifyAppId": "d1buvo1t3dd1m7"
         },
         "categories": {
             "auth": {
-                "retailbea1f98c": {}
+                "shoestore284fdf21": {}
+            },
+            "hosting": {
+                "amplifyhosting": {
+                    "appId": "d1buvo1t3dd1m7",
+                    "type": "cicd"
+                }
             }
         }
     }

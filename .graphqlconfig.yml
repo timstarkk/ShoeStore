@@ -1,8 +1,8 @@
 projects:
-  retail:
+  shoestore:
     schemaPath: src/graphql/schema.json
     includes:
-      - src/graphql/**/*.js
+      - 'type ShoppingCart @model {'
     excludes:
       - ./amplify/**
     extensions:

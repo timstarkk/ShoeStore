@@ -1,8 +1,8 @@
 {
-    "identityPoolName": "retailbea1f98c_identitypool_bea1f98c",
+    "identityPoolName": "shoestore284fdf21_identitypool_284fdf21",
     "allowUnauthenticatedIdentities": false,
-    "resourceNameTruncated": "retailbea1f98c",
-    "userPoolName": "retailbea1f98c_userpool_bea1f98c",
+    "resourceNameTruncated": "shoest284fdf21",
+    "userPoolName": "shoestore284fdf21_userpool_284fdf21",
     "autoVerifiedAttributes": [
         "email"
     ],
@@ -28,9 +28,9 @@
     "userpoolClientReadAttributes": [
         "email"
     ],
-    "userpoolClientLambdaRole": "retailbea1f98c_userpoolclient_lambda_role",
+    "userpoolClientLambdaRole": "shoest284fdf21_userpoolclient_lambda_role",
     "userpoolClientSetAttributes": false,
-    "resourceName": "retailbea1f98c",
+    "resourceName": "shoestore284fdf21",
     "authSelections": "identityPoolAndUserPool",
     "authRoleArn": {
         "Fn::GetAtt": [
