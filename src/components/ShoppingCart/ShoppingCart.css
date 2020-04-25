@@ -131,6 +131,7 @@
 @media screen and (max-width: 399px) {
   #flyout-menu {
     width: 100vw;
+    height: -webkit-fill-available;
   }
 
   #close-button {
