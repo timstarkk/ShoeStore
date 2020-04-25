@@ -13,7 +13,8 @@ export default class SignInForm extends Component {
             username: '',
             password: '',
             signedIn: false,
-            setCurrentUser: ''
+            setCurrentUser: '',
+            redirect: null
         }
 
         this.handleChange = this.handleChange.bind(this);
@@ -53,6 +54,7 @@ export default class SignInForm extends Component {
 
         this.setState({
             signedIn: true,
+            redirect: "/"
         });
     }
 
@@ -64,17 +66,9 @@ export default class SignInForm extends Component {
     render() {
         const { signedIn } = this.state;
 
-        if (signedIn) {
-            return (
-                <div className="account-wrapper">
-                    <div className="account-section">
-                        <div className="container-wrapper">
-                            <div className="line" />
-                            <h1>You have signed in!</h1>
-                        </div>
-                    </div>
-                </div>
-            )
+        if (this.state.redirect) {
+            return <Redirect to={this.state.redirect} />
+        
         } else {
             return (
                 <div className="account-wrapper">
