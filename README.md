@@ -1,4 +1,4 @@
-<!-- ![demoGif](https://github.com/timstarkk/portfolio/blob/master/src/images/portfolioDemo.gif) -->
+![demoGif](https://github.com/timstarkk/ShoeStore/blob/master/src/images/shoestore.gif)
 
 # E-commerce Site
 
