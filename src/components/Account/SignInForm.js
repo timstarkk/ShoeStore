@@ -12,7 +12,6 @@ export default class SignInForm extends Component {
         this.state = {
             username: '',
             password: '',
-            signedIn: false,
             setCurrentUser: '',
             redirect: null
         }
@@ -29,7 +28,7 @@ export default class SignInForm extends Component {
         })
 
         e.preventDefault();
-        const { signedIn, username, password, email, phone_number } = this.state;
+        const { username, password, email, phone_number } = this.state;
         await Auth.signIn({
             username,
             password
@@ -49,11 +48,9 @@ export default class SignInForm extends Component {
             })
             .catch(err => {
                 console.log(err.message);
-                console.log(this.state.signedIn)
             });
 
         this.setState({
-            signedIn: true,
             redirect: "/"
         });
     }
@@ -64,7 +61,6 @@ export default class SignInForm extends Component {
         });
     }
     render() {
-        const { signedIn } = this.state;
 
         if (this.state.redirect) {
             return <Redirect to={this.state.redirect} />
