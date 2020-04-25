@@ -10,7 +10,8 @@ export default class ConfirmForm extends Component {
         this.state = {
             username: '',
             confirmationCode: '',
-            redirect: null
+            redirect: null,
+            confirmed: false
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -21,7 +22,12 @@ export default class ConfirmForm extends Component {
         const { username, confirmationCode } = this.state;
 
         Auth.confirmSignUp(username, confirmationCode)
-            .then(() => console.log('confirmed sign up'))
+            .then(() => {
+                this.setState({
+                    confirmed: true,
+                    redirect: '/'
+                })
+            })
             .catch(error => console.log(error))
 
     }
@@ -34,20 +40,25 @@ export default class ConfirmForm extends Component {
         });
     }
     render() {
-        return (
-            <div className="account-wrapper">
-                <div className="account-section">
-                    <div className="container-wrapper">
-                        <h4>Confirm Account</h4>
-                        <div className="line" />
-                        <form onSubmit={this.handleSubmit}>
-                            <input type="text" name="username" placeholder="username" value={this.state.username} onChange={this.handleChange} />
-                            <input type="text" name="confirmationCode" placeholder="confirmation code" onChange={this.handleChange} />
-                            <button>Confirm</button>
-                        </form>
+
+        if (this.state.confirmed) {
+            return <Redirect to={this.state.redirect} />
+        } else {
+            return (
+                <div className="account-wrapper">
+                    <div className="account-section">
+                        <div className="container-wrapper">
+                            <h4>Confirm Account</h4>
+                            <div className="line" />
+                            <form onSubmit={this.handleSubmit}>
+                                <input type="text" name="username" placeholder="username" value={this.state.username} onChange={this.handleChange} />
+                                <input type="text" name="confirmationCode" placeholder="confirmation code" onChange={this.handleChange} />
+                                <button>Confirm</button>
+                            </form>
+                        </div>
                     </div>
                 </div>
-            </div>
-        )
+            )
+        }
     }
 }
