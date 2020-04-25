@@ -145,6 +145,18 @@
     font-size: 20px;
   }
   
+  @media screen and (max-width: 399px) {
+    .account-container-container {
+      z-index: 30;
+      padding: 0px;
+    }
+    
+    .account-menu {
+      width: 100%;
+      border-bottom: 2px solid var(--primaryColor);
+    }
+  }
+
   @media screen and (min-width: 768px) {
     .nav-btn {
       display: none;
