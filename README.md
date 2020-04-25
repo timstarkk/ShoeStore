@@ -6,13 +6,13 @@
 An e-commerce website Built with React.js, and AWS cloud infrastructure under the hood.
 Intended to be used as a template for construction of e-commerce sites for future clients.
 
-* [View Project](https://master.d39jz3uva366dw.amplifyapp.com/)
+* [View Project](https://master.d1buvo1t3dd1m7.amplifyapp.com/)
 
 ## Getting Started
 
 Cannot run project locally since requires AWS credentials.
 
-To explore the project, visit: https://master.d39jz3uva366dw.amplifyapp.com/
+To explore the project, visit: https://master.d1buvo1t3dd1m7.amplifyapp.com/
 
 ## Built With
 
