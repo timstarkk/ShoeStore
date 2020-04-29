@@ -23,7 +23,7 @@ export default class SignUpForm extends Component {
         e.preventDefault();
         const { signedUp, username, password, email, phone_number, confirmationCode } = this.state;
 
-        const correctedPhoneNumber = phone_number.replace(/\D/g,"");
+        const formattedPhoneNumber = phone_number.replace(/\D/g,"");
 
         if (!signedUp) {
             Auth.signUp({
@@ -31,7 +31,7 @@ export default class SignUpForm extends Component {
                 password,
                 attributes: {
                     email,
-                    phone_number: '+1' + correctedPhoneNumber
+                    phone_number: '+1' + formattedPhoneNumber
                 }
             })
                 .then(() => console.log('signed up'))
