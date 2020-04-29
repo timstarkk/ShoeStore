@@ -76,6 +76,7 @@ export default class SignUpForm extends Component {
                                 <input type="password" name="password" placeholder="password" onChange={this.handleChange} />
                                 <input type="text" name="email" placeholder="email address" onChange={this.handleChange} />
                                 <input type="text" name="phone_number" placeholder="phone number" onChange={this.handleChange} />
+                                <p>all fields required</p>
                                 <button>Sign Up</button>
                             </form>
                             <a href="/account/signin">Sign In To Your Account</a>
