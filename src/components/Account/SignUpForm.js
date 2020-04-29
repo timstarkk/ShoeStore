@@ -22,13 +22,16 @@ export default class SignUpForm extends Component {
     handleSubmit(e) {
         e.preventDefault();
         const { signedUp, username, password, email, phone_number, confirmationCode } = this.state;
+
+        const correctedPhoneNumber = phone_number.replace(/\D/g,"");
+
         if (!signedUp) {
             Auth.signUp({
                 username,
                 password,
                 attributes: {
                     email,
-                    phone_number: '+1' + phone_number
+                    phone_number: '+1' + correctedPhoneNumber
                 }
             })
                 .then(() => console.log('signed up'))
