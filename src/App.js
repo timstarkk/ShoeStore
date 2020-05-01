@@ -12,6 +12,7 @@ import SignUp from './pages/SignUp';
 import SignIn from './pages/SignIn';
 import Navbar from './components/Navbar/Navbar';
 import AboutPage from './pages/AboutPage';
+import ConfirmPage from './pages/Confirm';
 
 Amplify.configure(config);
 function App() {
@@ -25,6 +26,7 @@ function App() {
           <Route exact path="/store/:slug" component={ItemPage} />
           <Route exact path="/account/signup" component={SignUp} />
           <Route exact path="/account/signin" component={SignIn} />
+          <Route exact path="/account/confirm" component={ConfirmPage} />
           <Route exact path="/about" component={AboutPage} />
         </Switch>
       </ScrollToTop>
