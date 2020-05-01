@@ -22,7 +22,7 @@
     height: 2px;
     margin: 0 auto;
     background: var(--primaryColor);
-    margin-bottom: 4rem;
+    margin-bottom: 3rem;
 }
 
 .account-section form {
@@ -67,7 +67,7 @@
     color: grey;
 }
 
-.account-section form p {
+.account-section p {
     color: grey;
     font-size: 12px;
     margin-bottom: 1rem;
@@ -86,4 +86,8 @@
     visibility: visible !important;
     display: block;
     color: red;
+}
+
+.confirm-info {
+    margin-bottom: 2rem !important;
 }

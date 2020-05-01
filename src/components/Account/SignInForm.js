@@ -34,7 +34,19 @@ export default class SignInForm extends Component {
             password
         })
             .then(() => console.log('signed in'))
-            .catch(error => console.log(error))
+            .catch(error => {
+                if(error.code = "UserNotConfirmedException") {
+                        try {
+                            Auth.resendSignUp(username);
+                            console.log('code resent succesfully');
+                            this.setState({
+                                redirect: '/account/confirm'
+                            })
+                        } catch (err) {
+                            console.log('error resending code: ', err);
+                        }
+                }
+            })
 
 
         await Auth.confirmSignIn(username)
