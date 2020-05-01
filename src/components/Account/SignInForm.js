@@ -40,7 +40,7 @@ export default class SignInForm extends Component {
                             Auth.resendSignUp(username);
                             console.log('code resent succesfully');
                             this.setState({
-                                redirect: '/account/confirm'
+                                redirect: '/account/confirm' 
                             })
                         } catch (err) {
                             console.log('error resending code: ', err);
