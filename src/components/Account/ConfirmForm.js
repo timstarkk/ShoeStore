@@ -50,6 +50,7 @@ export default class ConfirmForm extends Component {
                         <div className="container-wrapper">
                             <h4>Confirm Account</h4>
                             <div className="line" />
+                            <p className="confirm-info">Please check your phone or email address for the 6-digit confirmation code.</p>
                             <form onSubmit={this.handleSubmit}>
                                 <input type="text" name="username" placeholder="username" value={this.state.username} onChange={this.handleChange} />
                                 <input type="text" name="confirmationCode" placeholder="confirmation code" onChange={this.handleChange} />
