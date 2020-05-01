@@ -72,3 +72,18 @@
     font-size: 12px;
     margin-bottom: 1rem;
 }
+
+.invalid {
+    border: 1px solid red !important;
+}
+
+.invalid-text {
+    visibility: hidden;
+    display: none;
+}
+
+.invalid-text.visible {
+    visibility: visible !important;
+    display: block;
+    color: red;
+}
