@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Redirect } from "react-router-dom";
 import { Auth } from 'aws-amplify';
 import './Account.css';
 import ConfirmForm from './ConfirmForm';
@@ -30,31 +31,25 @@ export default class SignUpForm extends Component {
 
         console.log(parametersPass);
 
-        if (!signedUp) {
-            if(parametersPass) {
-                Auth.signUp({
-                    username,
-                    password,
-                    attributes: {
-                        email,
-                        phone_number: '+1' + formattedPhoneNumber
-                    }
-                })
-                    .then(() => console.log('signed up'))
-                    .catch(error => console.log(error))
-    
-                this.setState({
-                    signedUp: true,
-                    username: '',
-                    password: ''
-                });
-            } else {
-                console.log('show red lines');
-            }
-        } else {
-            Auth.confirmSignUp(username, confirmationCode)
-                .then(() => console.log('confirmed sign up'))
+        if(parametersPass) {
+            Auth.signUp({
+                username,
+                password,
+                attributes: {
+                    email,
+                    phone_number: '+1' + formattedPhoneNumber
+                }
+            })
+                .then(() => console.log('signed up'))
                 .catch(error => console.log(error))
+
+            this.setState({
+                signedUp: true,
+                username: '',
+                password: ''
+            });
+        } else {
+            console.log('show red lines');
         }
 
     }
@@ -128,9 +123,7 @@ export default class SignUpForm extends Component {
         const { signedUp } = this.state;
 
         if (signedUp) {
-            return (
-                <ConfirmForm />
-            )
+            return <Redirect to='/account/confirm' />
         } else {
             return (
                 <div className="account-wrapper">
