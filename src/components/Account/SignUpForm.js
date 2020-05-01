@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Redirect } from "react-router-dom";
 import { Auth } from 'aws-amplify';
 import './Account.css';
-import ConfirmForm from './ConfirmForm';
 import validator from 'email-validator';
 
 export default class SignUpForm extends Component {
