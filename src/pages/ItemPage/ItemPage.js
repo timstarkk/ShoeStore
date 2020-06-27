@@ -2,8 +2,16 @@ import React, { Component } from 'react';
 import { ItemContext } from '../../context';
 import { Link } from 'react-router-dom';
 import { FaPlusCircle, FaMinusCircle } from "react-icons/fa";
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import './ItemPage.css';
 import Footer from '../../components/Footer/Footer';
+
+toast.configure();
+
+const notify = () => {
+    toast('Success! Item added to cart.', { draggable: true });
+};
 
 export default class ItemPage extends Component {
     static contextType = ItemContext;
@@ -69,7 +77,10 @@ export default class ItemPage extends Component {
                                         </div>
                                         <FaPlusCircle className="plus-one plus-minus-button" onClick={() => addAmountButton('plus')} />
                                     </div>
-                                    <div className="btn btn-primary add-button" onClick={() => handleAddToCart(item)}>
+                                    <div className="btn btn-primary add-button" onClick={() => {
+                                        handleAddToCart(item);
+                                        notify();
+                                        }}>
                                         add to cart
                                     </div>
                                 </div>
