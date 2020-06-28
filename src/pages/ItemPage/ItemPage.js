@@ -11,7 +11,7 @@ toast.configure();
 
 const notify = () => {
     toast('Success! Item added to cart.', { draggable: true });
-};
+}; 
 
 export default class ItemPage extends Component {
     static contextType = ItemContext;
