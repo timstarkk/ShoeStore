@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './Intro.css';
 import Title from '../Title/Title';
-import Image from '../../images/sneakerImage.jpeg';
 
 export default function Intro() {
     return (
@@ -14,7 +13,7 @@ export default function Intro() {
                 </p>
             </div>
             <div className="intro-feature">
-                <img src={Image} alt="dsfasd" />
+                <img src={'https://amplify-shoestore-shoestore-102527-deployment.s3.amazonaws.com/images/sneakerImage.jpeg'} alt="dsfasd" />
                 <div className="intro-feature-text">
                     <h4>only the best</h4>
                     <p>Our selection is handpicked from across the world by a seasoned team of individuals who have a proven taste for the highest quality footwear. We look and find the hidden gems, so you don't have to.</p>
